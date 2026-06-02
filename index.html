@@ -1,1 +1,717 @@
-INTERCEPT_TEST
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<style data-omelette-injected>html,body{background:transparent}</style><script data-omelette-injected>(()=>{var j=[];var x=false;var S=30000;var f=3000;document.addEventListener("DOMContentLoaded",()=>{const H=window.Babel;const G="om-src-id";if(H&&H.registerPlugin&&!(H.availablePlugins&&H.availablePlugins[G])){H.registerPlugin(G,({types:Y})=>({visitor:{JSXOpeningElement(U,Q){const J=U.node;if(J.name&&J.name.type==="JSXMemberExpression")return;for(let V=0;V<J.attributes.length;V++){const L=J.attributes[V];if(L.type==="JSXAttribute"&&L.name&&L.name.name==="data-om-id")return}const W=Q.file&&Q.file.opts&&Q.file.opts.filename||"?";const Z=J.loc&&J.loc.start;const z=`jsx:${W}:${J.start??0}:${Z?Z.line:0}:${Z?Z.column+1:0}`;J.attributes.push(Y.jsxAttribute(Y.jsxIdentifier("data-om-id"),Y.stringLiteral(z)))}}}))}const k="om-text-extract";let A=false;if(x&&H&&H.registerPlugin&&!(H.availablePlugins&&H.availablePlugins[k])){const Y=window.React;if(Y&&Y.useSyncExternalStore&&Y.createElement){A=true;const U={};const Q=new Set;let J=0;window.__omTextO=U;window.__omTextSet=(z)=>{for(const V in z){const L=z[V];if(L==null)delete U[V];else U[V]=L}J++;Q.forEach((V)=>V())};const W=(z)=>{Q.add(z);return()=>Q.delete(z)};const Z=()=>J;window.__OmT=function z(V){Y.useSyncExternalStore(W,Z,Z);return Y.createElement("span",{"data-om-text":V.i,className:"__om-t"},V.i in U?U[V.i]:V.children)};H.registerPlugin(k,({types:z})=>{const V={style:1,script:1,noscript:1,textarea:1,title:1,option:1,text:1,tspan:1,textPath:1};const L={placeholder:1,alt:1,title:1,label:1,"aria-label":1,"aria-description":1,"aria-placeholder":1};const _=($,C)=>z.logicalExpression("??",z.memberExpression(z.logicalExpression("||",z.memberExpression(z.identifier("window"),z.identifier("__omTextO")),z.objectExpression([])),z.stringLiteral($),true),C);const E=($)=>$.file&&$.file.opts&&$.file.opts.filename||"?";const B=($)=>$.file&&$.file.code||"";const b=($,C)=>{const X=(F)=>F&&F.start!=null&&F.end!=null&&(F.type==="StringLiteral"||F.type==="TemplateLiteral"&&F.expressions.length===0)?[F.start,F.end]:null;const N=X(C);if(N)return N;if(C&&C.type==="Identifier"){const F=$.scope.getBinding(C.name);if(F&&F.constant&&F.path.node.type==="VariableDeclarator"){return X(F.path.node.init)}}return null};const M=($,C,X)=>{const N=$.node;let F=false;const w=(K,q)=>{F=true;return z.jsxElement(z.jsxOpeningElement(z.jsxIdentifier("__OmT"),[z.jsxAttribute(z.jsxIdentifier("i"),z.stringLiteral(K))],false),z.jsxClosingElement(z.jsxIdentifier("__OmT")),[q],false)};const D=N.children.map((K)=>{if(K.type==="JSXText"){if(K.start==null||K.end==null)return K;const q=X.slice(K.start,K.end);const R=q.length-q.trimStart().length;const m=q.length-q.trimEnd().length;if(R+m>=q.length)return K;return w(`txt:${C}:${K.start+R}:${K.end-m}`,K)}if(K.type==="JSXExpressionContainer"){const q=b($,K.expression);if(q)return w(`str:${C}:${q[0]}:${q[1]}`,K)}return K});if(F)N.children=D};return{visitor:{JSXOpeningElement($,C){const X=$.node;const N=E(C);const F={};for(let w=0;w<X.attributes.length;w++){const D=X.attributes[w];if(D.type!=="JSXAttribute"||!D.name)continue;const K=D.name.name;if(!L[K])continue;if(!D.value||D.value.type!=="StringLiteral")continue;if(D.value.start==null||D.value.end==null)continue;const q=`txt:${N}:${D.value.start}:${D.value.end}`;F[K]=q;D.value=z.jsxExpressionContainer(_(q,z.stringLiteral(D.value.value)))}if(Object.keys(F).length){X.attributes.push(z.jsxAttribute(z.jsxIdentifier("data-om-text-attrs"),z.stringLiteral(JSON.stringify(F))))}},JSXElement($,C){const X=$.node.openingElement;const N=X&&X.name&&X.name.name;if(N==="__OmT")return;if(typeof N==="string"&&V[N])return;M($,E(C),B(C))},JSXFragment($,C){M($,E(C),B(C))}}}})}}const u=A?["transform-react-jsx-source",G,k]:["transform-react-jsx-source",G];document.querySelectorAll('script[type="text/babel"],script[type="text/jsx"]').forEach((Y,U)=>{const Q=Y.getAttribute("data-plugins")||"";const J=u.filter((W)=>Q.indexOf(W)<0);if(J.length){Y.setAttribute("data-plugins",Q?`${Q},${J.join(",")}`:J.join(","))}if(!Y.hasAttribute("data-filename")){Y.setAttribute("data-filename",Y.getAttribute("src")||`inline-${U}`)}})});var y=window.parent;if(y&&y!==window){const H=(Q,J)=>{try{y.postMessage({__omelette_log:true,type:Q,data:J},"*")}catch{}};["log","warn","error"].forEach((Q)=>{const J=console[Q];console[Q]=(...W)=>{const Z=W.map((z)=>{try{return typeof z==="object"?JSON.stringify(z):String(z)}catch{try{return String(z)}catch{return"[unstringifiable]"}}}).join(" ");H(Q,Z);J.apply(console,W)}});window.addEventListener("error",(Q)=>{const J=Q.target;if(J&&J!==window&&J.tagName){const W=J.src||J.href||"";H("resource_error",`${J.tagName} failed to load: ${W}`)}else{H("error",`${Q.message||"Unknown error"} at ${Q.filename||"?"}:${Q.lineno||0}:${Q.colno||0}`)}},true);window.addEventListener("unhandledrejection",(Q)=>{const J=Q.reason;const W=J instanceof Error?`${J.message} ${J.stack}`:String(J);H("error",`Unhandled rejection: ${W}`)});const G=()=>{try{y.postMessage({type:"omelette:height",height:document.documentElement.scrollHeight},"*")}catch{}};if(document.readyState==="complete")G();else window.addEventListener("load",G);if(window.ResizeObserver)new ResizeObserver(G).observe(document.documentElement);const k={};let A=0;window.claude={complete(Q){return new Promise((J,W)=>{if(!j.length){W(new Error("claude.complete: no parent origin"));return}const Z=`c${++A}`;const z=()=>setTimeout(()=>{delete k[Z];W(new Error(`claude.complete: no data for ${S/1000}s`))},S);const V=z();k[Z]={resolve:J,reject:W,text:"",t:V,arm:z};try{for(const L of j){y.postMessage({__om_api:true,id:Z,body:Q},L)}}catch(L){clearTimeout(V);delete k[Z];W(L)}})}};const u={};let Y=0;window.omelette={writeFile:(Q,J)=>new Promise((W,Z)=>{if(!j.length){W();return}const z=`f${++Y}`;const V=setTimeout(()=>{delete u[z];W()},f);u[z]={resolve:W,reject:Z,t:V};try{for(const L of j){y.postMessage({__om_file:true,id:z,op:"write",path:Q,content:J},L)}}catch{clearTimeout(V);delete u[z];W()}})};const U=(Q)=>{try{return JSON.stringify(Q)}catch{return JSON.stringify(String(Q))}};window.addEventListener("message",(Q)=>{if(j.indexOf(Q.origin)<0)return;if(Q.source!==y)return;const J=Q.data;if(!J)return;if(J.type==="omelette-preview-refresh"){if(typeof J.token!=="string"||!/^[0-9a-f.-]+(\.(rc|pr-[0-9]+))?(\.[0-9]+\.[0-9a-f]{16})?$/.test(J.token))return;const z=Math.max(1,Math.floor((J.expiresAt||0)-Date.now()/1000));document.cookie="__Host-omelette-preview="+J.token+"; Path=/; Secure; SameSite=None; Partitioned; Max-Age="+z;return}if(J.__om_file_r){const z=u[J.id];if(!z)return;clearTimeout(z.t);delete u[J.id];if(J.ok)z.resolve();else z.reject(new Error(J.error||"write failed"));return}if(J.__om_api_r){const z=k[J.id];if(!z)return;if(J.error!=null){clearTimeout(z.t);delete k[J.id];z.reject(new Error(J.error));return}if(J.chunk!=null){clearTimeout(z.t);z.t=z.arm();z.text+=J.chunk;return}if(J.done){clearTimeout(z.t);delete k[J.id];z.resolve(J.text!=null?J.text:z.text);return}return}if(!J.__om_eval)return;const W=J;const Z=(z)=>{Q.source.postMessage({...z,__om_eval_r:1,id:W.id},Q.origin)};try{const z=(0,eval)(W.code);if(z&&typeof z.then==="function"){z.then((V)=>Z({ok:1,v:U(V)}),(V)=>Z({ok:0,e:String(V)}))}else{Z({ok:1,v:U(z)})}}catch(z){Z({ok:0,e:String(z)})}})}})();
+</script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Orbi Seller â Pare de gerir seu marketplace no achismo</title>
+<meta name="description" content="Com o Orbi vocÃª sabe exatamente quanto estÃ¡ lucrando, onde estÃ¡ perdendo dinheiro e o que fazer para crescer â tudo em tempo real, sem planilha, sem achismo.">
+
+<meta property="og:title" content="Orbi Seller â Comece a decidir com dados">
+<meta property="og:description" content="A plataforma que reÃºne calculadoras, comparador, cockpit e IA para vocÃª gerenciar suas vendas em todos os marketplaces â em um sÃ³ lugar.">
+<meta property="og:image" content="[PLACEHOLDER â inserir URL da imagem de preview depois]">
+<meta property="og:url" content="https://orbiseller.com">
+<meta property="og:type" content="website">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Orbi Seller â Comece a decidir com dados">
+<meta name="twitter:description" content="A plataforma que reÃºne calculadoras, comparador, cockpit e IA para vocÃª gerenciar suas vendas em todos os marketplaces â em um sÃ³ lugar.">
+
+<link rel="stylesheet" href="orbi.css">
+<link rel="stylesheet" href="orbi-sections.css">
+
+<template id="__bundler_thumbnail" data-bg-color="#050505">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1200" height="800" fill="#050505"></rect>
+    <circle cx="600" cy="400" r="150" fill="none" stroke="#6366F1" stroke-width="14"></circle>
+    <circle cx="600" cy="400" r="40" fill="#8B5CF6"></circle>
+    <circle cx="600" cy="250" r="22" fill="#6366F1"></circle>
+    <text x="600" y="620" font-family="Arial, sans-serif" font-size="92" font-weight="700" fill="#ffffff" text-anchor="middle">Orbi</text>
+  </svg>
+</template>
+</head>
+<body>
+
+<div class="bg-aura"></div>
+<div class="tech-grid"></div>
+
+<!-- ============================ NAV ============================ -->
+<nav class="nav">
+  <div class="wrap nav-inner">
+    <a class="logo" href="#top">
+      <svg class="logo-mark" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <circle cx="12" cy="12" r="9" stroke="rgba(255,255,255,0.25)" stroke-width="1.5"></circle>
+        <ellipse cx="12" cy="12" rx="9" ry="3.6" stroke="#6366F1" stroke-width="1.5" transform="rotate(-28 12 12)"></ellipse>
+        <circle cx="20" cy="8.2" r="2.1" fill="#6366F1"></circle>
+      </svg>
+      Orbi Seller
+    </a>
+    <div class="nav-links">
+      <a href="#funcionalidades">Funcionalidades</a>
+      <a href="#comparativo">Comparativo</a>
+      <a href="#planos">Planos</a>
+      <a href="#faq">FAQ</a>
+    </div>
+    <div class="nav-cta">
+      <a href="#" class="btn btn-secondary">Entrar</a>
+      <a href="#planos" class="btn btn-primary">ComeÃ§ar grÃ¡tis</a>
+    </div>
+  </div>
+</nav>
+
+<span id="top"></span>
+
+<!-- ============================ S1 HERO ============================ -->
+<header class="hero section-pad">
+  <canvas class="particles" id="heroParticles"></canvas>
+  <div class="wrap">
+    <div class="reveal" style="display:flex;justify-content:center;">
+      <span class="tag"><span class="pulse"></span> Orbi Seller</span>
+    </div>
+    <h1 class="display reveal">Pare de gerir seu marketplace no achismo. Comece a decidir com dados.</h1>
+    <p class="subhead reveal">Com o Orbi vocÃª sabe exatamente quanto estÃ¡ lucrando, onde estÃ¡ perdendo dinheiro e o que fazer para crescer â tudo em tempo real, sem planilha, sem achismo.</p>
+    <div class="hero-demo reveal" style="transition-delay:870ms;">
+      <button type="button" class="demo-btn" id="openDemo">
+        <span class="demo-play"><svg width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M3 2l7 4-7 4V2z" fill="currentColor"></path></svg></span>
+        Ver demonstraÃ§Ã£o <span class="demo-min">(2 min)</span>
+      </button>
+    </div>
+    <div class="hero-cta reveal">
+      <a href="#planos" class="btn btn-primary btn-lg">Quero controlar meu negÃ³cio</a>
+      <a href="#funcionalidades" class="btn btn-secondary btn-lg">
+        Ver funcionalidades
+        <span class="btn-arrow"><svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>
+      </a>
+    </div>
+
+    <div class="hero-seals reveal" style="transition-delay:980ms;">
+      <span class="seal">
+        <svg width="13" height="13" viewBox="0 0 16 16" fill="none"><rect x="3" y="7" width="10" height="6.5" rx="1" stroke="currentColor" stroke-width="1.3"></rect><path d="M5.2 7V5.2a2.8 2.8 0 015.6 0V7" stroke="currentColor" stroke-width="1.3"></path></svg>
+        Pagamento 100% seguro
+      </span>
+      <span class="seal">
+        <svg width="13" height="13" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6.2" stroke="currentColor" stroke-width="1.3"></circle><path d="M5.3 8.2l1.8 1.8 3.6-4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+        14 dias de garantia total
+      </span>
+      <span class="seal">
+        <svg width="13" height="13" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6.2" stroke="currentColor" stroke-width="1.3"></circle><path d="M5.6 5.6l4.8 4.8M10.4 5.6l-4.8 4.8" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"></path></svg>
+        Sem contrato ou fidelidade
+      </span>
+    </div>
+
+    <div class="hero-proof reveal">
+      <span class="avs">
+        <span><img src="https://lh3.googleusercontent.com/d/14z-SADdrZyEvbmmgJuq-QnGRMj5Tuk5n=w120" alt="" loading="lazy" referrerpolicy="no-referrer"></span>
+        <span><img src="https://lh3.googleusercontent.com/d/18otLCAhXmWNnVrCVQ6VGDm-SP3_Q2iNX=w120" alt="" loading="lazy" referrerpolicy="no-referrer"></span>
+        <span><img src="https://lh3.googleusercontent.com/d/1wp-wX_9rgwkMlJ2y6AjFDpk106-EJYfV=w120" alt="" loading="lazy" referrerpolicy="no-referrer"></span>
+        <span><img src="https://lh3.googleusercontent.com/d/1xdUgQgImKu6GI8U329s2Os6esQldpJ05=w120" alt="" loading="lazy" referrerpolicy="no-referrer"></span>
+      </span>
+      <span>Mais de <b id="sellerCount">2.000</b> sellers jÃ¡ usam o Orbi</span>
+    </div>
+
+    <!-- COCKPIT MOCKUP -->
+    <div class="hero-mock-wrap reveal">
+      <div class="cockpit">
+        <div class="ck-rail">
+          <svg class="ck-logo" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="rgba(255,255,255,0.25)" stroke-width="1.5"></circle><ellipse cx="12" cy="12" rx="9" ry="3.6" stroke="#6366F1" stroke-width="1.5" transform="rotate(-28 12 12)"></ellipse><circle cx="20" cy="8.2" r="2.1" fill="#6366F1"></circle></svg>
+          <div class="ck-ricon active" title="Cockpit"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="7" height="7" stroke="currentColor" stroke-width="1.6"></rect><rect x="14" y="3" width="7" height="7" stroke="currentColor" stroke-width="1.6"></rect><rect x="3" y="14" width="7" height="7" stroke="currentColor" stroke-width="1.6"></rect><rect x="14" y="14" width="7" height="7" stroke="currentColor" stroke-width="1.6"></rect></svg></div>
+          <div class="ck-ricon" title="Calculadoras"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="5" y="3" width="14" height="18" stroke="currentColor" stroke-width="1.6"></rect><path d="M8 7h8M8 11h2M12 11h2M16 11h0M8 15h2M12 15h2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"></path></svg></div>
+          <div class="ck-ricon" title="Comparador"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M4 18V9M10 18V5M16 18v-6M21 18H3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"></path></svg></div>
+          <div class="ck-ricon" title="AnÃºncios"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M3 11l16-7v16L3 13v-2z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"></path></svg></div>
+          <div class="ck-ricon" title="IA"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 3l2 5 5 2-5 2-2 5-2-5-5-2 5-2 2-5z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"></path></svg></div>
+        </div>
+        <div class="ck-main">
+          <div class="ck-top">
+            <div class="ck-bread">Cockpit <span style="color:var(--text-3)">/</span> VisÃ£o geral <span style="color:var(--text-3)">Â·</span> Ãltimos 30 dias</div>
+            <span class="ck-pill"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M12 3l2 5 5 2-5 2-2 5-2-5-5-2 5-2 2-5z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"></path></svg> Orbi IA</span>
+          </div>
+          <div class="ck-body">
+            <div class="ck-kpis">
+              <div class="ck-kpi"><div class="kl">Faturamento</div><div class="kv" data-live="fat">R$ 184.920</div><div class="kd ck-up">â² 12,4% vs. mÃªs anterior</div></div>
+              <div class="ck-kpi"><div class="kl">Pedidos</div><div class="kv" data-live="ped">2.318</div><div class="kd ck-up">â² 8,1%</div></div>
+              <div class="ck-kpi"><div class="kl">Margem mÃ©dia</div><div class="kv">23,7%</div><div class="kd ck-down">â¼ 1,2%</div></div>
+              <div class="ck-kpi"><div class="kl">ACOS (Ads)</div><div class="kv">11,8%</div><div class="kd ck-up">â² saudÃ¡vel</div></div>
+            </div>
+
+            <div class="ck-grid">
+              <div class="ck-panel">
+                <h5>Faturamento por dia</h5>
+                <div class="sub">Receita lÃ­quida consolidada Â· todos os canais</div>
+                <div class="ck-bars">
+                  <div class="bar" data-h="38"></div><div class="bar" data-h="52"></div><div class="bar" data-h="44"></div>
+                  <div class="bar" data-h="68"></div><div class="bar" data-h="58"></div><div class="bar" data-h="82"></div>
+                  <div class="bar" data-h="71"></div><div class="bar" data-h="90"></div><div class="bar" data-h="64"></div>
+                  <div class="bar" data-h="78"></div><div class="bar" data-h="96"></div><div class="bar" data-h="84"></div>
+                </div>
+                <div class="ck-legend"><span>1 mai</span><span style="margin-left:auto">31 mai</span></div>
+              </div>
+              <div class="ck-panel">
+                <h5>Vendas por canal</h5>
+                <div class="sub">ParticipaÃ§Ã£o no faturamento</div>
+                <div class="ck-share">
+                  <div class="row"><span class="badge badge-shopee"><span class="dot"></span>Shopee</span><span class="meter"><i style="width:42%;background:var(--shopee)"></i></span><span class="pct">42%</span></div>
+                  <div class="row"><span class="badge badge-ml"><span class="dot"></span>Meli</span><span class="meter"><i style="width:31%;background:var(--ml)"></i></span><span class="pct">31%</span></div>
+                  <div class="row"><span class="badge badge-amazon"><span class="dot"></span>Amazon</span><span class="meter"><i style="width:15%;background:var(--amazon)"></i></span><span class="pct">15%</span></div>
+                  <div class="row"><span class="badge badge-magalu"><span class="dot"></span>Magalu</span><span class="meter"><i style="width:8%;background:var(--magalu)"></i></span><span class="pct">8%</span></div>
+                  <div class="row"><span class="badge badge-tiktok"><span class="dot"></span>TikTok</span><span class="meter"><i style="width:4%;background:var(--tiktok)"></i></span><span class="pct">4%</span></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="ck-table">
+              <div class="thead"><div>Produto</div><div class="col-hide">Canal</div><div>Margem</div><div>Status</div></div>
+              <div class="trow"><div class="prod"><span class="ck-thumb"></span>Kit Organizador Modular</div><div class="col-hide"><span class="badge badge-shopee"><span class="dot"></span>Shopee</span></div><div>28,4%</div><div><span class="badge badge-success"><span class="dot"></span>Ãtimo</span></div></div>
+              <div class="trow"><div class="prod"><span class="ck-thumb"></span>LuminÃ¡ria LED Smart</div><div class="col-hide"><span class="badge badge-ml"><span class="dot"></span>Meli</span></div><div>9,1%</div><div><span class="badge" style="background:rgba(245,158,11,.12);color:var(--warn)"><span class="dot" style="background:var(--warn)"></span>AtenÃ§Ã£o</span></div></div>
+              <div class="trow"><div class="prod"><span class="ck-thumb"></span>Mochila Antifurto Pro</div><div class="col-hide"><span class="badge badge-amazon"><span class="dot"></span>Amazon</span></div><div>31,7%</div><div><span class="badge badge-success"><span class="dot"></span>Ãtimo</span></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ============================ MARKETPLACE CARROSSEL ============================ -->
+<section class="mk-strip">
+  <div class="wrap">
+    <p class="mk-strip-title">CompatÃ­vel com todos os principais marketplaces do Brasil</p>
+  </div>
+  <div class="mk-marquee">
+    <div class="mk-track">
+      <img class="mk-logo" src="https://lh3.googleusercontent.com/d/1G1VyfF6v90CKXauhD2oQHe7IAdgyPuca=w400" alt="Shopee" referrerpolicy="no-referrer">
+      <img class="mk-logo" src="https://lh3.googleusercontent.com/d/1XiTqPlttxm6kFUqFVLtwk_VxPR8bsfs2=w400" alt="Mercado Livre" referrerpolicy="no-referrer">
+      <img class="mk-logo" src="https://lh3.googleusercontent.com/d/1fcyaUNDvu77jR71MqTLcZ3j4CVe1U-P_=w400" alt="Amazon" referrerpolicy="no-referrer">
+      <img class="mk-logo" src="https://lh3.googleusercontent.com/d/11iW4yoBRZiqmlChp8KiuCSHE5V1FFIyk=w400" alt="Magalu" referrerpolicy="no-referrer">
+      <img class="mk-logo chip" src="https://lh3.googleusercontent.com/d/1UnDTj9PHnRBJG3PkGNCTYOrN4csYGLB4=w400" alt="Shein" referrerpolicy="no-referrer">
+      <img class="mk-logo" src="https://lh3.googleusercontent.com/d/1Qo9YFHrFxKFhUx75-GA-vkf8l_wGCufn=w400" alt="Netshoes" referrerpolicy="no-referrer">
+      <img class="mk-logo chip" src="https://lh3.googleusercontent.com/d/1jeV9eDFKgzVmz8onOqe-k_MM0H9lyOZd=w400" alt="TikTok Shop" referrerpolicy="no-referrer">
+      <img class="mk-logo" src="https://lh3.googleusercontent.com/d/1yMbnjjSwZXUlmstlhzvgCAoW15sKpM9a=w400" alt="AliExpress" referrerpolicy="no-referrer">
+      <img class="mk-logo" src="https://lh3.googleusercontent.com/d/1NpThUyZ6fnr_NelhrXMMk351Y4viGSqi=w400" alt="Temu" referrerpolicy="no-referrer">
+      <img class="mk-logo chip" src="https://lh3.googleusercontent.com/d/1uQIsGXd8Vlm5y-we0d7SNKCBFlDgd-yF=w400" alt="Dafiti" referrerpolicy="no-referrer">
+      <img class="mk-logo" src="https://lh3.googleusercontent.com/d/1Gh9gGfsgbhXTsGXmrqNcSoKdHsniJQ7g=w400" alt="Kiwify" referrerpolicy="no-referrer">
+      <!-- duplicate for seamless loop -->
+      <img class="mk-logo" src="https://lh3.googleusercontent.com/d/1G1VyfF6v90CKXauhD2oQHe7IAdgyPuca=w400" alt="" aria-hidden="true" referrerpolicy="no-referrer">
+      <img class="mk-logo" src="https://lh3.googleusercontent.com/d/1XiTqPlttxm6kFUqFVLtwk_VxPR8bsfs2=w400" alt="" aria-hidden="true" referrerpolicy="no-referrer">
+      <img class="mk-logo" src="https://lh3.googleusercontent.com/d/1fcyaUNDvu77jR71MqTLcZ3j4CVe1U-P_=w400" alt="" aria-hidden="true" referrerpolicy="no-referrer">
+      <img class="mk-logo" src="https://lh3.googleusercontent.com/d/11iW4yoBRZiqmlChp8KiuCSHE5V1FFIyk=w400" alt="" aria-hidden="true" referrerpolicy="no-referrer">
+      <img class="mk-logo chip" src="https://lh3.googleusercontent.com/d/1UnDTj9PHnRBJG3PkGNCTYOrN4csYGLB4=w400" alt="" aria-hidden="true" referrerpolicy="no-referrer">
+      <img class="mk-logo" src="https://lh3.googleusercontent.com/d/1Qo9YFHrFxKFhUx75-GA-vkf8l_wGCufn=w400" alt="" aria-hidden="true" referrerpolicy="no-referrer">
+      <img class="mk-logo chip" src="https://lh3.googleusercontent.com/d/1jeV9eDFKgzVmz8onOqe-k_MM0H9lyOZd=w400" alt="" aria-hidden="true" referrerpolicy="no-referrer">
+      <img class="mk-logo" src="https://lh3.googleusercontent.com/d/1yMbnjjSwZXUlmstlhzvgCAoW15sKpM9a=w400" alt="" aria-hidden="true" referrerpolicy="no-referrer">
+      <img class="mk-logo" src="https://lh3.googleusercontent.com/d/1NpThUyZ6fnr_NelhrXMMk351Y4viGSqi=w400" alt="" aria-hidden="true" referrerpolicy="no-referrer">
+      <img class="mk-logo chip" src="https://lh3.googleusercontent.com/d/1uQIsGXd8Vlm5y-we0d7SNKCBFlDgd-yF=w400" alt="" aria-hidden="true" referrerpolicy="no-referrer">
+      <img class="mk-logo" src="https://lh3.googleusercontent.com/d/1Gh9gGfsgbhXTsGXmrqNcSoKdHsniJQ7g=w400" alt="" aria-hidden="true" referrerpolicy="no-referrer">
+    </div>
+  </div>
+</section>
+
+<!-- ============================ S2 DOR ============================ -->
+<section class="section-pad dor">
+  <div class="wrap">
+    <div class="dor-list" data-stagger>
+      <p class="reveal">â VocÃª vende em Shopee, Mercado Livre, Magalu, TikTok e Amazon ao mesmo tempo â mas para comparar o resultado de cada um vocÃª precisa abrir cinco abas, cinco planilhas e fazer conta na mÃ£o. Enquanto isso, o dia passa.</p>
+      <p class="reveal">â VocÃª investe em Ads todo mÃªs mas nÃ£o sabe exatamente qual produto estÃ¡ dando retorno real, qual estÃ¡ queimando dinheiro e qual merecia receber mais verba.</p>
+      <p class="reveal">â VocÃª fatura bem mas quando olha para o caixa no final do mÃªs, o dinheiro nÃ£o aparece. VocÃª nÃ£o tem os indicadores certos para entender o que estÃ¡ sugando sua margem.</p>
+      <p class="reveal">â VocÃª cria tÃ­tulo e descriÃ§Ã£o para cada produto em cada marketplace no achismo â sem saber o padrÃ£o de SEO de cada plataforma, sem saber se estÃ¡ aparecendo para as pessoas certas.</p>
+      <p class="reveal">â VocÃª tem vÃ¡rias lojas rodando ao mesmo tempo mas nÃ£o tem um lugar sÃ³ onde consegue ver tudo â faturamento, metas, projeÃ§Ãµes e alertas â de uma vez, em tempo real.</p>
+      <p class="reveal muted">Cada uma dessas dores foi real para mim. Por isso eu construÃ­ o Orbi.</p>
+    </div>
+    <div class="sec-cta reveal">
+      <a href="#funcionalidades" class="btn btn-primary btn-lg">
+        Conhecer o Orbi
+        <span class="btn-arrow"><svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ S3 AGITAÃÃO ============================ -->
+<section class="section-pad agit">
+  <div class="wrap">
+    <div class="shead center reveal">
+      <span class="label">A conta que ninguÃ©m faz</span>
+      <h2 class="h2">O custo invisÃ­vel de operar no improviso.</h2>
+    </div>
+    <div class="agit-grid" data-stagger>
+      <div class="agit-cell reveal">
+        <div class="agit-num"><span data-count="3" data-suffix=" meses">0 meses</span></div>
+        <p>vendendo produto no prejuÃ­zo sem saber.</p>
+      </div>
+      <div class="agit-cell reveal">
+        <div class="agit-num">R$ <span data-count="7000">0</span></div>
+        <p>gastos em consultoria que nÃ£o entregou resultado.</p>
+      </div>
+      <div class="agit-cell reveal">
+        <div class="agit-num">Horas</div>
+        <p>perdidas toda semana em planilhas que nunca fecham.</p>
+      </div>
+    </div>
+    <p class="reveal" style="text-align:center;max-width:62ch;margin:52px auto 0;color:var(--text-2);font-size:17px;line-height:1.7;">Cada mÃªs que passa sem visibilidade real do seu negÃ³cio vocÃª estÃ¡ pagando um custo que nÃ£o aparece no extrato. <span style="color:#fff;">Quanto isso jÃ¡ custou para vocÃª atÃ© hoje?</span></p>
+    <div class="sec-cta reveal">
+      <a href="#planos" class="btn btn-primary btn-lg">Quero parar de perder dinheiro</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ S4 SOLUÃÃO ============================ -->
+<section class="section-pad">
+  <div class="wrap">
+    <div class="sol-grid">
+      <div class="sol-photo reveal">
+        <svg class="ph-icon" width="64" height="64" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8.5" r="3.8" stroke="currentColor" stroke-width="1.3"></circle><path d="M4.5 20c0-4 3.4-6.5 7.5-6.5s7.5 2.5 7.5 6.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"></path></svg>
+        <span class="ph-cap">[ Foto do fundador ]</span>
+      </div>
+      <div class="sol-divider reveal"></div>
+      <div class="reveal">
+        <span class="label" style="display:block;margin-bottom:22px">Por que o Orbi existe</span>
+        <p class="sol-quote">"O Orbi Seller nasceu das minhas prÃ³prias dores como seller. Cada ferramenta resolve um problema real que eu vivi. Hoje uso no meu negÃ³cio todo dia â e a diferenÃ§a Ã© simples: parei de trabalhar no escuro e comecei a decidir com dados."</p>
+        <div class="sol-by">
+          <div class="nm">Danilo</div>
+          <div class="rl">Seller de marketplace hÃ¡ 2 anos Â· Fundador do Orbi Seller</div>
+        </div>
+        <div class="sec-cta start reveal" style="margin-top:32px;">
+          <a href="#funcionalidades" class="btn btn-secondary btn-lg">
+            Ver como funciona
+            <span class="btn-arrow"><svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ S5 FUNCIONALIDADES ============================ -->
+<section class="section-pad" id="funcionalidades">
+  <div class="wrap">
+    <div class="shead center reveal">
+      <span class="label">Funcionalidades</span>
+      <h2 class="h2">Tudo que o seller precisa, sem trocar de aba.</h2>
+      <p>Da precificaÃ§Ã£o Ã  otimizaÃ§Ã£o de anÃºncios â cada mÃ³dulo foi desenhado a partir da operaÃ§Ã£o real de quem vende.</p>
+    </div>
+
+    <!-- Feature 1: Calculadoras -->
+    <div class="feat reveal from-left">
+      <div class="feat-copy">
+        <div style="display:flex;flex-wrap:wrap;gap:8px;">
+          <span class="badge badge-shopee"><span class="dot"></span>Shopee</span>
+          <span class="badge badge-ml"><span class="dot"></span>ML</span>
+          <span class="badge badge-magalu"><span class="dot"></span>Magalu</span>
+          <span class="badge badge-tiktok"><span class="dot"></span>TikTok</span>
+          <span class="badge badge-amazon"><span class="dot"></span>Amazon</span>
+        </div>
+        <h3>Calculadoras de Marketplace</h3>
+        <p>VocÃª nÃ£o sabe quanto vai lucrar de verdade antes de anunciar. Com as calculadoras do Orbi vocÃª calcula margem real, comissÃ£o, impostos e frete em todos os marketplaces com as taxas atualizadas de 2026.</p>
+        <ul class="feat-points">
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg> Taxas sempre atualizadas</li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg> Margem real antes de anunciar</li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg> Sem limite de uso em qualquer plano</li>
+        </ul>
+      </div>
+      <div class="feat-visual">
+        <div class="card card-lum card-hoverable card-mk-shopee appmock">
+          <span class="card-glow"></span>
+          <div class="am-top"><span class="am-title">Calculadora Â· Shopee</span><span class="badge badge-shopee"><span class="dot"></span>Shopee</span></div>
+          <div class="am-body">
+            <div class="am-row"><span class="am-k">PreÃ§o de venda</span><span class="am-v">R$ 89,90</span></div>
+            <div class="am-row"><span class="am-k">ComissÃ£o + taxas</span><span class="am-v" style="color:var(--text-2)">â R$ 17,08</span></div>
+            <div class="am-row"><span class="am-k">Custo + frete</span><span class="am-v" style="color:var(--text-2)">â R$ 48,30</span></div>
+            <div class="am-row"><span class="am-k" style="color:#fff">Lucro lÃ­quido</span><span class="am-v" style="color:var(--success)">R$ 24,52</span></div>
+            <div class="am-row" style="border-top:1px solid var(--border)"><span class="am-k" style="color:#fff">Margem real</span><span class="badge badge-success"><span class="dot"></span>27,3%</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Feature 2: Comparador (reverse) -->
+    <div class="feat reverse reveal from-right">
+      <div class="feat-copy">
+        <span class="badge badge-indigo"><span class="dot"></span>Comparador</span>
+        <h3>Comparador de Marketplaces</h3>
+        <p>VocÃª perde tempo calculando o mesmo produto em cada plataforma separado. O Comparador faz isso em segundos â vocÃª vÃª lado a lado onde seu produto tem mais margem e onde nÃ£o vale a pena anunciar.</p>
+        <ul class="feat-points">
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg> CÃ¡lculo simultÃ¢neo em 5 plataformas</li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg> DecisÃ£o em segundos</li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg> Com IA para recomendar o melhor canal</li>
+        </ul>
+      </div>
+      <div class="feat-visual">
+        <div class="card card-lum card-hoverable card-mk-indigo appmock">
+          <span class="card-glow"></span>
+          <div class="am-top"><span class="am-title">Comparador Â· Kit Organizador</span><span class="ck-pill">Melhor canal</span></div>
+          <div class="am-body">
+            <div class="cmp-bars">
+              <div class="cmp-bar"><span class="am-k"><span class="badge badge-shopee"><span class="dot"></span>Shopee</span></span><span class="track"><i style="width:92%;background:var(--shopee)"></i></span><span class="val" style="color:var(--success)">R$ 24,52</span></div>
+              <div class="cmp-bar"><span class="am-k"><span class="badge badge-ml"><span class="dot"></span>Meli</span></span><span class="track"><i style="width:71%;background:var(--ml)"></i></span><span class="val">R$ 18,90</span></div>
+              <div class="cmp-bar"><span class="am-k"><span class="badge badge-amazon"><span class="dot"></span>Amazon</span></span><span class="track"><i style="width:58%;background:var(--amazon)"></i></span><span class="val">R$ 15,40</span></div>
+              <div class="cmp-bar"><span class="am-k"><span class="badge badge-magalu"><span class="dot"></span>Magalu</span></span><span class="track"><i style="width:39%;background:var(--magalu)"></i></span><span class="val">R$ 9,80</span></div>
+            </div>
+            <div class="ai-msg bot" style="margin-top:16px"><span class="ai-tag">Orbi IA</span>Para este produto, a Shopee oferece o maior lucro lÃ­quido. Considere realocar o estoque do Magalu.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Feature 3: KPI -->
+    <div class="feat reveal from-left">
+      <div class="feat-copy">
+        <span class="badge badge-magalu"><span class="dot"></span>Cockpit</span>
+        <h3>Cockpit â Central de Resultados</h3>
+        <p>VocÃª tem vÃ¡rias lojas mas nÃ£o consegue ver tudo em um lugar sÃ³. O Cockpit consolida faturamento, pedidos, metas e projeÃ§Ãµes de todas as suas lojas em tempo real â com alertas automÃ¡ticos quando algo precisa de atenÃ§Ã£o.</p>
+        <ul class="feat-points">
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg> Todas as lojas em um lugar</li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg> ProjeÃ§Ã£o de fechamento do mÃªs</li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg> Alertas automÃ¡ticos de risco</li>
+        </ul>
+      </div>
+      <div class="feat-visual">
+        <div class="card card-lum card-hoverable card-mk-magalu appmock">
+          <span class="card-glow"></span>
+          <div class="am-top"><span class="am-title">KPI da loja Â· Magalu</span><span class="badge badge-magalu"><span class="dot"></span>Magalu</span></div>
+          <div class="am-body">
+            <div class="am-row"><span class="am-k">Taxa de conversÃ£o</span><span class="am-v" style="color:var(--success)">3,8%</span></div>
+            <div class="am-row"><span class="am-k">ReputaÃ§Ã£o</span><span class="am-v">Verde Â· 98%</span></div>
+            <div class="am-row"><span class="am-k">Cancelamentos</span><span class="am-v" style="color:var(--warn)">2,1%</span></div>
+            <div class="ai-msg bot" style="margin-top:14px"><span class="ai-tag">Plano de aÃ§Ã£o</span>1. Reduza o prazo de envio em 1 dia. &nbsp; 2. Ajuste o tÃ­tulo de 3 anÃºncios com baixa visibilidade.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Feature 4: Otimizador de anÃºncios (reverse) -->
+    <div class="feat reverse reveal from-right">
+      <div class="feat-copy">
+        <span class="badge badge-amazon"><span class="dot"></span>KPI IA</span>
+        <h3>KPI da Loja com IA</h3>
+        <p>VocÃª nÃ£o tem indicadores claros para decidir o que escalar e o que pausar. O KPI importa seus dados de vendas e a IA gera um plano de aÃ§Ã£o com recomendaÃ§Ãµes prÃ¡ticas baseadas nos seus nÃºmeros reais.</p>
+        <ul class="feat-points">
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg> ImportaÃ§Ã£o de CSV de qualquer ERP</li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg> AnÃ¡lise automÃ¡tica por IA</li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg> Plano de aÃ§Ã£o gerado instantaneamente</li>
+        </ul>
+      </div>
+      <div class="feat-visual">
+        <div class="card card-lum card-hoverable card-mk-amazon appmock">
+          <span class="card-glow"></span>
+          <div class="am-top"><span class="am-title">Otimizador Â· Mochila Antifurto</span><span class="badge badge-amazon"><span class="dot"></span>Amazon</span></div>
+          <div class="am-body">
+            <div class="imgrid">
+              <div class="cell tag-ai"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" stroke="currentColor" stroke-width="1.4"></rect><circle cx="8.5" cy="10" r="1.6" stroke="currentColor" stroke-width="1.4"></circle><path d="M4 17l5-4 4 3 3-2 4 3" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"></path></svg></div>
+              <div class="cell tag-ai"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" stroke="currentColor" stroke-width="1.4"></rect><circle cx="8.5" cy="10" r="1.6" stroke="currentColor" stroke-width="1.4"></circle><path d="M4 17l5-4 4 3 3-2 4 3" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"></path></svg></div>
+              <div class="cell tag-ai"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" stroke="currentColor" stroke-width="1.4"></rect><circle cx="8.5" cy="10" r="1.6" stroke="currentColor" stroke-width="1.4"></circle><path d="M4 17l5-4 4 3 3-2 4 3" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"></path></svg></div>
+            </div>
+            <div class="ai-msg bot" style="margin-top:14px"><span class="ai-tag">TÃ­tulo gerado</span>Mochila Antifurto Pro USB ImpermeÃ¡vel â Notebook 15,6" Cinza</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Feature 5: Assistente IA -->
+    <div class="feat reveal from-left">
+      <div class="feat-copy">
+        <span class="badge badge-tiktok"><span class="dot"></span>Ads</span>
+        <h3>CÃ¡lculo e GestÃ£o de Ads</h3>
+        <p>VocÃª investe em Ads sem saber se o retorno Ã© real. O Orbi calcula o ROAS real por loja e por produto â e te mostra onde aumentar verba e onde cortar antes de queimar mais dinheiro.</p>
+        <ul class="feat-points">
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg> ROAS real por produto</li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg> DecisÃ£o baseada em dado</li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg> Para de queimar verba no lugar errado</li>
+        </ul>
+      </div>
+      <div class="feat-visual">
+        <div class="card card-lum card-hoverable card-mk-tiktok appmock">
+          <span class="card-glow"></span>
+          <div class="am-top"><span class="am-title">Assistente Orbi IA</span><span class="badge badge-tiktok"><span class="dot"></span>TikTok</span></div>
+          <div class="am-body">
+            <div class="ai-thread">
+              <div class="ai-msg user">Qual produto estÃ¡ com a pior margem este mÃªs?</div>
+              <div class="ai-msg bot"><span class="ai-tag">Orbi IA</span>A "LuminÃ¡ria LED Smart" estÃ¡ com 9,1% de margem no Meli. O frete subiu 14%. Sugiro reprecificar para R$ 119,90.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sec-cta reveal">
+      <a href="#planos" class="btn btn-primary btn-lg">ComeÃ§ar grÃ¡tis agora</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ S6 PROVA SOCIAL ============================ -->
+<section class="section-pad">
+  <div class="wrap">
+    <div class="shead center reveal">
+      <span class="label">Prova social</span>
+      <h2 class="h2">Sellers que pararam de operar no escuro.</h2>
+    </div>
+    <div class="testi-grid" data-stagger="150">
+      <div class="card card-lum reveal testi">
+        <div class="stars">âââââ</div>
+        <p>"Eu estava escalando â mais lojas, mais produtos, mais marketplaces. Mas chegou um ponto que perdi o controle de tudo. NÃ£o dava conta de cadastrar, otimizar, precificar, anunciar em Ads e ainda gerir 3 marketplaces com mais de 50 produtos ao mesmo tempo. O Orbi centralizou tudo. Hoje consigo operar em escala sem perder o controle do negÃ³cio."</p>
+        <div class="who"><div class="av">LU</div><div><div class="nm">Lucas</div><div class="ctx">Seller em 3 marketplaces, mais de 50 produtos</div></div></div>
+      </div>
+      <div class="card card-lum reveal testi">
+        <div class="stars">âââââ</div>
+        <p>"Minhas vendas caÃ­ram e eu nÃ£o sabia o porquÃª. Quando analisei minha loja no KPI do Orbi, entendi o que estava acontecendo â alguns produtos precisavam de promoÃ§Ã£o mais agressiva e outros estavam subprecificados. Ajustei os dois lados e consegui equilibrar o faturamento. Sem o KPI eu teria ficado meses tentando adivinhar o problema."</p>
+        <div class="who"><div class="av">MA</div><div><div class="nm">Matheus</div><div class="ctx">Seller em marketplace</div></div></div>
+      </div>
+      <div class="card card-lum reveal testi">
+        <div class="stars">âââââ</div>
+        <p>"Cada ferramenta do Orbi nasceu de uma dor real. A do Lucas. A do Matheus. A minha. Se vocÃª se identificou com alguma dessas histÃ³rias â o Orbi foi feito para vocÃª."</p>
+        <div class="who"><div class="av">DA</div><div><div class="nm">Danilo</div><div class="ctx">Fundador do Orbi Seller</div></div></div>
+      </div>
+    </div>
+    <div class="sec-cta reveal">
+      <a href="#planos" class="btn btn-primary btn-lg">Quero esse controle tambÃ©m</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ S7 COMPARATIVO ============================ -->
+<section class="section-pad agit" id="comparativo">
+  <div class="wrap">
+    <div class="shead center reveal">
+      <span class="label">Comparativo</span>
+      <h2 class="h2">Por que sellers trocam tudo pelo Orbi.</h2>
+    </div>
+    <div class="cmp-scroll reveal">
+      <table class="cmp-table">
+        <thead>
+          <tr>
+            <th class="feat-col">Recurso</th>
+            <th class="cmp-orbi">Orbi Seller</th>
+            <th>Planilhas</th>
+            <th>Calc. gratuitas</th>
+            <th>ERP tradicional</th>
+            <th>Consultoria</th>
+          </tr>
+        </thead>
+        <tbody data-stagger="90">
+          <tr class="reveal"><td class="feat-col">Calculadoras atualizadas por marketplace</td><td class="cmp-orbi cmp-yes">â</td><td class="cmp-no">â</td><td class="cmp-mid">â</td><td class="cmp-mid">â</td><td class="cmp-no">â</td></tr>
+          <tr class="reveal"><td class="feat-col">Comparador de marketplaces com IA</td><td class="cmp-orbi cmp-yes">â</td><td class="cmp-no">â</td><td class="cmp-no">â</td><td class="cmp-no">â</td><td class="cmp-mid">â</td></tr>
+          <tr class="reveal"><td class="feat-col">Cockpit em tempo real</td><td class="cmp-orbi cmp-yes">â</td><td class="cmp-no">â</td><td class="cmp-no">â</td><td class="cmp-yes">â</td><td class="cmp-no">â</td></tr>
+          <tr class="reveal"><td class="feat-col">KPI com anÃ¡lise por IA</td><td class="cmp-orbi cmp-yes">â</td><td class="cmp-no">â</td><td class="cmp-no">â</td><td class="cmp-mid">â</td><td class="cmp-yes">â</td></tr>
+          <tr class="reveal"><td class="feat-col">GeraÃ§Ã£o de conteÃºdo por IA</td><td class="cmp-orbi cmp-yes">â</td><td class="cmp-no">â</td><td class="cmp-no">â</td><td class="cmp-no">â</td><td class="cmp-no">â</td></tr>
+          <tr class="reveal"><td class="feat-col">CÃ¡lculo e gestÃ£o de Ads</td><td class="cmp-orbi cmp-yes">â</td><td class="cmp-mid">â</td><td class="cmp-no">â</td><td class="cmp-mid">â</td><td class="cmp-yes">â</td></tr>
+          <tr class="reveal"><td class="feat-col">Assistente IA no app</td><td class="cmp-orbi cmp-yes">â</td><td class="cmp-no">â</td><td class="cmp-no">â</td><td class="cmp-no">â</td><td class="cmp-no">â</td></tr>
+          <tr class="reveal"><td class="feat-col">DisponÃ­vel 24h todo dia</td><td class="cmp-orbi cmp-yes">â</td><td class="cmp-yes">â</td><td class="cmp-yes">â</td><td class="cmp-yes">â</td><td class="cmp-no">â</td></tr>
+          <tr class="reveal"><td class="feat-col">PreÃ§o mensal</td><td class="cmp-orbi" style="font-family:var(--font-display);font-weight:600;color:#fff">a partir de R$ 0</td><td>â</td><td>R$ 0</td><td class="cmp-mid">R$ 300+</td><td class="cmp-mid">R$ 1.500+</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="sec-cta reveal">
+      <a href="#planos" class="btn btn-primary btn-lg">
+        Trocar tudo pelo Orbi
+        <span class="btn-arrow"><svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ S8 PLANOS ============================ -->
+<section class="section-pad" id="planos">
+  <div class="wrap">
+    <div class="shead center reveal">
+      <span class="label">Planos</span>
+      <h2 class="h2">Comece grÃ¡tis. CresÃ§a quando fizer sentido.</h2>
+      <p>Sem cartÃ£o para comeÃ§ar. Mude de plano a qualquer momento.</p>
+    </div>
+    <div class="plans" data-stagger>
+      <!-- Free -->
+      <div class="card card-lum card-hoverable reveal plan">
+        <div class="pname">Free</div>
+        <div class="pprice">R$ 0</div>
+        <div class="pdesc">Para comeÃ§ar a precificar com clareza.</div>
+        <a href="#" class="btn btn-secondary">ComeÃ§ar grÃ¡tis</a>
+        <ul class="plan-feats">
+          <li><svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg> Calculadoras completas (Shopee, ML, Magalu, TikTok, Amazon)</li>
+          <li><svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg> Sem limite de uso</li>
+          <li class="soon"><svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M4 8h8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"></path></svg> Sem comparador de marketplaces</li>
+          <li class="soon"><svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M4 8h8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"></path></svg> Sem IA</li>
+        </ul>
+      </div>
+
+      <!-- Seller -->
+      <div class="card card-lum card-hoverable reveal plan">
+        <div class="pname">Seller</div>
+        <div class="pprice">R$ 79,90<small> /mÃªs</small></div>
+        <div class="pdesc">Para quem jÃ¡ vende e quer escalar com IA.</div>
+        <a href="#" class="btn btn-secondary">Assinar Seller</a>
+        <ul class="plan-feats">
+          <li><svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg> Calculadoras completas</li>
+          <li><svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg> Comparador de marketplaces com IA</li>
+          <li><svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg> Cockpit completo</li>
+          <li><svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg> Assistente Orbi IA</li>
+          <li><svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg> GeraÃ§Ã£o de tÃ­tulo e descriÃ§Ã£o por IA ilimitada</li>
+          <li><svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg> CÃ¡lculo de Ads por loja Â· ExportaÃ§Ãµes</li>
+        </ul>
+      </div>
+
+      <!-- Pro (destaque) -->
+      <div class="card card-lum card-hoverable reveal plan plan-pro" style="position:relative">
+        <span class="pro-beam"></span>
+        <div class="plan-badge">Mais Popular</div>
+        <div class="pname indigo-text">Pro</div>
+        <div class="pprice">R$ 147,90<small> /mÃªs</small></div>
+        <div class="pdesc">Para sellers que decidem com dados e IA.</div>
+        <a href="#" class="btn btn-primary">Assinar Pro</a>
+        <ul class="plan-feats">
+          <li><svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg> Tudo do Seller</li>
+          <li><svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg> KPI da loja completo com anÃ¡lise por IA</li>
+          <li><svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg> Plano de aÃ§Ã£o automÃ¡tico com IA</li>
+          <li><svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg> Otimizador: 9 imagens profissionais em atÃ© 10 anÃºncios/mÃªs</li>
+          <li><svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg> GestÃ£o de Ads por loja Â· HistÃ³rico completo</li>
+        </ul>
+      </div>
+
+      <!-- Business -->
+      <div class="card card-lum card-hoverable reveal plan">
+        <div class="pname">Business</div>
+        <div class="pprice">R$ 247,90<small> /mÃªs</small></div>
+        <div class="pdesc">Para operaÃ§Ãµes em equipe.</div>
+        <a href="#" class="btn btn-secondary">Falar com vendas</a>
+        <ul class="plan-feats">
+          <li><svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg> Tudo do Pro</li>
+          <li><svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg> AtÃ© 3 usuÃ¡rios na mesma conta</li>
+          <li><svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg> Suporte prioritÃ¡rio</li>
+          <li class="soon"><svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M8 4v8M4 8h8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"></path></svg> Comunidade de sellers (em breve)</li>
+          <li class="soon"><svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M8 4v8M4 8h8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"></path></svg> Acompanhamento em grupo mensal (em breve)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ S9 GARANTIA ============================ -->
+<section class="section-pad guarantee">
+  <div class="wrap reveal">
+    <div class="shield">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M12 3l7 3v5c0 4.5-3 8-7 9-4-1-7-4.5-7-9V6l7-3z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"></path><path d="M8.5 12l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+    </div>
+    <h2>Risco zero. SÃ©rio.</h2>
+    <p>Eu sei que vocÃª jÃ¡ foi prometido resultado antes e nÃ£o recebeu. Eu mesmo paguei R$ 7.000 em uma consultoria que nÃ£o entregou o que prometeu. Por isso a garantia do Orbi Ã© simples e sem letras miÃºdas: se em 14 dias vocÃª nÃ£o enxergar valor no Orbi â por qualquer motivo â eu devolvo 100% do seu dinheiro. Sem burocracia. Sem enrolaÃ§Ã£o. SÃ³ vou te pedir uma coisa: me diz o que nÃ£o funcionou. NÃ£o para dificultar o reembolso â vocÃª jÃ¡ terÃ¡ o dinheiro de volta. Mas para eu melhorar o produto para os prÃ³ximos sellers. 14 dias para testar tudo. Zero risco para vocÃª.</p>
+    <div class="sec-cta reveal">
+      <a href="#planos" class="btn btn-primary btn-lg">Testar sem risco por 14 dias</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ S10 CTA ============================ -->
+<section class="section-pad cta">
+  <div class="wrap reveal">
+    <h2 class="h2">VocÃª chegou atÃ© aqui por um motivo.</h2>
+    <p>Porque reconheceu sua operaÃ§Ã£o em alguma das dores que descrevi. Porque sabe que continuar no achismo tem um custo real. Porque quer tomar decisÃµes com dados â nÃ£o com feeling.</p>
+    <div><a href="#planos" class="btn btn-primary btn-lg">Quero controlar meu negÃ³cio</a></div>
+    <p style="margin-top:24px;max-width:50ch;font-size:14px;color:var(--warn);">â¡ PreÃ§o de lanÃ§amento ativo agora. Esses valores podem aumentar a qualquer momento â sem aviso prÃ©vio. Quem assinar hoje trava o preÃ§o atual.</p>
+    <p style="margin-top:14px;max-width:54ch;font-size:13px;color:var(--text-3);">Sem contrato. Sem fidelidade. Cancele quando quiser. Â· 14 dias de garantia. 100% do dinheiro de volta se nÃ£o gostar.</p>
+  </div>
+</section>
+
+<!-- ============================ S11 FAQ ============================ -->
+<section class="section-pad" id="faq">
+  <div class="wrap">
+    <div class="shead center reveal">
+      <span class="label">FAQ</span>
+      <h2 class="h2">Perguntas frequentes</h2>
+    </div>
+    <div class="faq-wrap reveal">
+      <div class="faq-item">
+        <button class="faq-q">Preciso ser um seller grande para usar o Orbi? <span class="faq-icon"></span></button>
+        <div class="faq-a"><div class="faq-a-inner">NÃ£o. O Orbi foi criado por um seller intermediÃ¡rio para sellers intermediÃ¡rios. Se vocÃª jÃ¡ vende em marketplace â seja com 10 produtos ou 500 â o Orbi foi feito para vocÃª. Quanto antes vocÃª comeÃ§ar a operar com dados, mais rÃ¡pido vocÃª chega no prÃ³ximo nÃ­vel.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Funciona para quem vende em sÃ³ um marketplace? <span class="faq-icon"></span></button>
+        <div class="faq-a"><div class="faq-a-inner">Sim. VocÃª nÃ£o precisa vender em vÃ¡rios lugares para aproveitar o Orbi. As calculadoras, o Cockpit e o KPI funcionam perfeitamente para quem opera em uma plataforma sÃ³. E quando vocÃª decidir expandir, o Orbi jÃ¡ estarÃ¡ pronto para acompanhar.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">O Orbi substitui meu ERP? <span class="faq-icon"></span></button>
+        <div class="faq-a"><div class="faq-a-inner">NÃ£o â e nÃ£o foi feito para isso. ERP cuida de pedidos, estoque e nota fiscal. O Orbi cuida da sua estratÃ©gia â precificaÃ§Ã£o, margem, performance, KPI e inteligÃªncia do negÃ³cio. Os dois se complementam. A maioria dos nossos usuÃ¡rios usa o ERP junto com o Orbi.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">E se as taxas dos marketplaces mudarem? <span class="faq-icon"></span></button>
+        <div class="faq-a"><div class="faq-a-inner">As calculadoras do Orbi sÃ£o atualizadas sempre que as plataformas mudam as regras. VocÃª nÃ£o precisa ficar monitorando â quando as taxas mudarem, o Orbi jÃ¡ estarÃ¡ com os nÃºmeros corretos.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Preciso de conhecimento tÃ©cnico para usar? <span class="faq-icon"></span></button>
+        <div class="faq-a"><div class="faq-a-inner">Zero. O Orbi foi pensado para o seller do dia a dia â nÃ£o para analistas ou programadores. Se vocÃª sabe usar WhatsApp, vocÃª sabe usar o Orbi. E se tiver qualquer dÃºvida, o assistente IA estÃ¡ lÃ¡ para te guiar.</div></div>
+      </div>
+    </div>
+    <div class="sec-cta reveal">
+      <a href="#planos" class="btn btn-primary btn-lg">Ainda tem dÃºvida? Comece grÃ¡tis</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ FOOTER ============================ -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="logo" href="#top">
+          <svg class="logo-mark" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="rgba(255,255,255,0.25)" stroke-width="1.5"></circle><ellipse cx="12" cy="12" rx="9" ry="3.6" stroke="#6366F1" stroke-width="1.5" transform="rotate(-28 12 12)"></ellipse><circle cx="20" cy="8.2" r="2.1" fill="#6366F1"></circle></svg>
+          Orbi Seller
+        </a>
+        <p class="body">A plataforma de gestÃ£o para sellers de marketplace que decidem com dados.</p>
+      </div>
+      <div class="footer-col">
+        <h6>Produto</h6>
+        <a href="#funcionalidades">Funcionalidades</a>
+        <a href="#comparativo">Comparativo</a>
+        <a href="#planos">Planos</a>
+        <a href="#faq">FAQ</a>
+      </div>
+      <div class="footer-col">
+        <h6>Empresa</h6>
+        <a href="#">Sobre</a>
+        <a href="#">Blog</a>
+        <a href="#">Contato</a>
+        <a href="#">Comunidade</a>
+      </div>
+      <div class="footer-col">
+        <h6>Legal</h6>
+        <a href="#">Termos de uso</a>
+        <a href="#">Privacidade</a>
+        <a href="#">Cookies</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>Â© 2026 Orbi Seller. Todos os direitos reservados.</span>
+      <div class="footer-social">
+        <a href="#" aria-label="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="1.5"></rect><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.5"></circle><circle cx="17.5" cy="6.5" r="1" fill="currentColor"></circle></svg></a>
+        <a href="#" aria-label="YouTube"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><rect x="3" y="6" width="18" height="12" rx="3" stroke="currentColor" stroke-width="1.5"></rect><path d="M10 9.5l4 2.5-4 2.5v-5z" fill="currentColor"></path></svg></a>
+        <a href="#" aria-label="LinkedIn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" stroke-width="1.5"></rect><path d="M7 10v7M7 7v.01M11 17v-4a2 2 0 014 0v4M11 17v-7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path></svg></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ============================ DEMO MODAL ============================ -->
+<div class="modal" id="demoModal" aria-hidden="true">
+  <div class="modal-overlay" data-close></div>
+  <div class="modal-box" role="dialog" aria-modal="true" aria-label="DemonstraÃ§Ã£o do Orbi">
+    <button type="button" class="modal-close" id="closeDemo" aria-label="Fechar">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 4l8 8M12 4l-4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"></path></svg>
+    </button>
+    <div class="modal-player">
+      <div class="modal-play"><svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M8 5l11 7-11 7V5z" fill="currentColor"></path></svg></div>
+      <span class="modal-ph-label">VÃ­deo de demonstraÃ§Ã£o Â· 2 min</span>
+    </div>
+  </div>
+</div>
+
+<!-- ============================ WHATSAPP FLOAT ============================ -->
+<a class="wa-float" href="https://wa.me/5511925086817?text=Ola%2C%20Tudo%20bem%3F%20Quero%20saber%20mais%20sobre%20o%20Orbi" target="_blank" rel="noopener" aria-label="Fale com a gente no WhatsApp">
+  <span class="wa-tip">Fale com a gente</span>
+  <svg width="30" height="30" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+    <path d="M16 3C8.82 3 3 8.82 3 16c0 2.3.62 4.46 1.7 6.32L3 29l6.86-1.66A12.9 12.9 0 0016 29c7.18 0 13-5.82 13-13S23.18 3 16 3z" fill="#fff"></path>
+    <path d="M22.6 19.3c-.36-.18-2.12-1.04-2.45-1.16-.33-.12-.57-.18-.8.18-.24.36-.92 1.16-1.13 1.4-.2.24-.42.27-.78.09-.36-.18-1.5-.55-2.86-1.77-1.06-.94-1.77-2.1-1.98-2.46-.2-.36-.02-.55.16-.73.16-.16.36-.42.54-.63.18-.21.24-.36.36-.6.12-.24.06-.45-.03-.63-.09-.18-.8-1.94-1.1-2.65-.29-.7-.58-.6-.8-.62h-.69c-.24 0-.62.09-.95.45-.33.36-1.25 1.22-1.25 2.98s1.28 3.46 1.46 3.7c.18.24 2.52 3.85 6.1 5.4.85.37 1.52.59 2.04.75.86.27 1.64.23 2.26.14.69-.1 2.12-.87 2.42-1.7.3-.84.3-1.55.21-1.7-.09-.15-.33-.24-.69-.42z" fill="#25D366"></path>
+  </svg>
+</a>
+
+<script src="orbi.js"></script>
+<script src="orbi-fx.js"></script>
+<script src="orbi-colors.js"></script>
+</body>
+</html>
