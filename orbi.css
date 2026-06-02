@@ -1,0 +1,515 @@
+/* ============================================================
+   ORBI SELLER â Design System
+   Plataforma de gestÃ£o para sellers de marketplace
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap');
+
+:root {
+  /* Base */
+  --black: #000000;
+  --black-alt: #0A0A0A;
+  --border: rgba(255, 255, 255, 0.08);
+  --border-strong: rgba(255, 255, 255, 0.16);
+
+  /* Surfaces */
+  --card: rgba(255, 255, 255, 0.02);
+  --card-hover: rgba(255, 255, 255, 0.035);
+  --input-bg: rgba(255, 255, 255, 0.04);
+
+  /* Text */
+  --text: #FFFFFF;
+  --text-2: rgba(255, 255, 255, 0.62);
+  --text-3: rgba(255, 255, 255, 0.40);
+
+  /* Brand */
+  --indigo: #6366F1;
+  --indigo-hover: #4F52D4;
+  --indigo-soft: rgba(99, 102, 241, 0.12);
+
+  /* Marketplaces */
+  --shopee: #EE4D2D;
+  --ml: #FFE600;       --ml-text: #B8A200;
+  --amazon: #FF9900;   --amazon-text: #CC7A00;
+  --magalu: #0086FF;
+  --tiktok: #69C9D0;
+
+  /* Status */
+  --success: #22C55E;
+  --warn: #F59E0B;
+  --error: #EF4444;
+
+  /* Type */
+  --font-display: 'Plus Jakarta Sans', sans-serif;
+  --font-body: 'Inter', sans-serif;
+
+  /* Layout */
+  --maxw: 1200px;
+  --gutter: 32px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--black);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+::selection { background: rgba(99, 102, 241, 0.35); color: #fff; }
+
+/* ---- Background aura (Salo-style radial gradient) ---- */
+.bg-aura {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 80% 55% at 50% -8%, rgba(99, 102, 241, 0.22), transparent 60%),
+    radial-gradient(ellipse 60% 50% at 50% 0%, rgba(124, 58, 237, 0.16), transparent 55%),
+    radial-gradient(ellipse 120% 80% at 50% 38%, rgba(30, 27, 75, 0.45), transparent 70%),
+    #000000;
+}
+/* slow breathing drift on the aura */
+.bg-aura::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 50% 40% at 50% 4%, rgba(99, 102, 241, 0.14), transparent 60%);
+  animation: auraBreathe 14s ease-in-out infinite;
+}
+@keyframes auraBreathe {
+  0%, 100% { opacity: 0.5; transform: translateY(0) scale(1); }
+  50% { opacity: 1; transform: translateY(2%) scale(1.06); }
+}
+
+/* ---- Floating particles canvas (hero) ---- */
+.particles {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* ---- Technical grid background (milimetrado quase invisÃ­vel) ---- */
+.tech-grid {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 64px 64px;
+  /* fade the grid toward edges */
+  mask-image: radial-gradient(ellipse 90% 70% at 50% 30%, #000 35%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 90% 70% at 50% 30%, #000 35%, transparent 100%);
+}
+
+/* ============================================================
+   TYPOGRAPHY
+   ============================================================ */
+.label {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-3);
+}
+
+h1, h2, h3, h4 { font-family: var(--font-display); letter-spacing: -0.04em; font-weight: 700; }
+
+.display {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(40px, 6vw, 72px);
+  line-height: 1.02;
+  letter-spacing: -0.04em;
+}
+
+.h2 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(32px, 4.4vw, 52px);
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+}
+
+.subhead {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(18px, 2vw, 22px);
+  line-height: 1.45;
+  letter-spacing: -0.02em;
+  color: var(--text-2);
+}
+
+.body { font-family: var(--font-body); font-weight: 400; color: var(--text-2); }
+
+.indigo-text { color: var(--indigo); }
+
+/* ============================================================
+   LAYOUT
+   ============================================================ */
+.wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 var(--gutter); position: relative; z-index: 1; }
+
+section { position: relative; z-index: 1; }
+
+.section-pad { padding: 120px 0; }
+
+@media (max-width: 720px) {
+  .section-pad { padding: 80px 0; }
+  :root { --gutter: 20px; }
+}
+
+/* ============================================================
+   BUTTONS
+   ============================================================ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 14px;
+  border-radius: 0;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  padding: 12px 24px;
+  transition: background 150ms ease-in-out, border-color 150ms ease-in-out, transform 150ms ease-in-out, color 150ms ease-in-out;
+  will-change: transform;
+}
+.btn:hover { transform: scale(1.02); }
+
+.btn-primary { background: var(--indigo); color: #fff; }
+.btn-primary:hover { background: var(--indigo-hover); }
+
+.btn-secondary {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.8);
+}
+.btn-secondary:hover { border-color: rgba(255, 255, 255, 0.4); color: #fff; }
+
+.btn-lg { padding: 16px 34px; font-size: 16px; }
+
+.btn-arrow svg { transition: transform 150ms ease; }
+.btn:hover .btn-arrow svg { transform: translateX(3px); }
+
+/* ============================================================
+   CARD + luminous top line
+   ============================================================ */
+.card {
+  position: relative;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 0;
+  padding: 24px;
+  transition: border-color 150ms ease, transform 150ms ease, background 150ms ease;
+}
+
+/* luminous line on top (Resend style) */
+.card-lum::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px;
+  max-width: 70%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+  animation: lumPulse 3s ease-in-out infinite;
+}
+@keyframes lumPulse {
+  0%, 100% { opacity: 0.1; }
+  50% { opacity: 0.3; }
+}
+
+/* slow drifting sheen across luminous cards */
+.card-lum::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(circle at 30% 18%, rgba(99, 102, 241, 0.10), transparent 42%);
+  background-size: 220% 220%;
+  background-position: 0% 0%;
+  animation: cardSheen 11s ease-in-out infinite;
+}
+@keyframes cardSheen {
+  0%   { background-position: 12% 0%; opacity: 0.55; }
+  50%  { background-position: 88% 60%; opacity: 1; }
+  100% { background-position: 12% 0%; opacity: 0.55; }
+}
+
+.card-hoverable:hover { transform: translateY(-2px); background: var(--card-hover); }
+
+/* ============================================================
+   MARKETPLACE BADGES
+   ============================================================ */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 4px 9px;
+  border-radius: 0;
+  line-height: 1;
+  white-space: nowrap;
+}
+.badge .dot { width: 6px; height: 6px; border-radius: 50%; }
+
+.badge-shopee { background: rgba(238, 77, 45, 0.12);  color: var(--shopee); }
+.badge-shopee .dot { background: var(--shopee); }
+.badge-ml { background: rgba(255, 230, 0, 0.12); color: var(--ml-text); }
+.badge-ml .dot { background: var(--ml); }
+.badge-amazon { background: rgba(255, 153, 0, 0.12); color: var(--amazon-text); }
+.badge-amazon .dot { background: var(--amazon); }
+.badge-magalu { background: rgba(0, 134, 255, 0.12); color: var(--magalu); }
+.badge-magalu .dot { background: var(--magalu); }
+.badge-tiktok { background: rgba(105, 201, 208, 0.12); color: var(--tiktok); }
+.badge-tiktok .dot { background: var(--tiktok); }
+.badge-indigo { background: var(--indigo-soft); color: var(--indigo); }
+.badge-indigo .dot { background: var(--indigo); }
+.badge-success { background: rgba(34, 197, 94, 0.12); color: var(--success); }
+.badge-success .dot { background: var(--success); }
+
+/* card hover lights border in marketplace color */
+.card-mk-shopee:hover { border-color: rgba(238, 77, 45, 0.55); }
+.card-mk-ml:hover     { border-color: rgba(255, 230, 0, 0.5); }
+.card-mk-amazon:hover { border-color: rgba(255, 153, 0, 0.55); }
+.card-mk-magalu:hover { border-color: rgba(0, 134, 255, 0.55); }
+.card-mk-tiktok:hover { border-color: rgba(105, 201, 208, 0.55); }
+.card-mk-indigo:hover { border-color: rgba(99, 102, 241, 0.6); }
+
+/* ============================================================
+   INPUTS
+   ============================================================ */
+.input {
+  background: var(--input-bg);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0;
+  color: #fff;
+  font-family: var(--font-body);
+  font-size: 14px;
+  padding: 12px 14px;
+  width: 100%;
+  transition: border-color 150ms ease;
+}
+.input::placeholder { color: var(--text-3); }
+.input:focus { outline: none; border-color: var(--indigo); }
+
+/* ============================================================
+   TAG (pill) â ORBI SELLER w/ pulsing dot
+   ============================================================ */
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-2);
+  padding: 7px 14px;
+  border: 1px solid rgba(99, 102, 241, 0.4);
+  border-radius: 0;
+  background: rgba(99, 102, 241, 0.05);
+  white-space: nowrap;
+}
+.tag .pulse {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--indigo);
+  position: relative;
+}
+.tag .pulse::after {
+  content: ""; position: absolute; inset: 0; border-radius: 50%;
+  background: var(--indigo);
+  animation: dotPulse 2s ease-out infinite;
+}
+@keyframes dotPulse {
+  0% { transform: scale(1); opacity: 0.7; }
+  100% { transform: scale(3.2); opacity: 0; }
+}
+
+/* ============================================================
+   SCROLL REVEAL
+   ============================================================ */
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity 400ms ease-out, transform 400ms ease-out; }
+.reveal.in { opacity: 1; transform: none; }
+
+/* directional reveals (features slide in from the sides) */
+.reveal.from-left  { transform: translateX(-46px); }
+.reveal.from-right { transform: translateX(46px); }
+.reveal.from-left.in, .reveal.from-right.in { transform: none; }
+
+/* word-by-word headline reveal */
+.word { display: inline-block; overflow: hidden; vertical-align: top; padding-bottom: 0.22em; margin-bottom: -0.22em; }
+.word > i {
+  display: inline-block;
+  font-style: normal;
+  transform: translateY(130%);
+  opacity: 0;
+  transition: transform 520ms cubic-bezier(.2,.8,.25,1), opacity 520ms ease-out;
+}
+.hero.intro-done .word > i { transform: none; opacity: 1; }
+
+/* hero intro: each major element rises in sequence */
+.hero .reveal { opacity: 0; transform: translateY(20px); transition: opacity 500ms ease-out, transform 500ms ease-out; }
+.hero.intro-done .reveal { opacity: 1; transform: none; }
+/* headline block stays put â only its words animate */
+.hero .display.reveal, .hero.intro-done .display.reveal { opacity: 1; transform: none; transition: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal, .hero .reveal { opacity: 1; transform: none; transition: none; }
+  .word > i { opacity: 1; transform: none; transition: none; }
+  .card-lum::before, .card-lum::after, .tag .pulse::after, .bg-aura::after, .hero::before,
+  .pro-beam, .cta .btn-primary { animation: none !important; }
+  html { scroll-behavior: auto; }
+}
+
+/* ============================================================
+   DIVIDERS
+   ============================================================ */
+.hairline { height: 1px; width: 100%; background: var(--border); }
+
+/* ============================================================
+   CHROMATIC HIERARCHY (word-level highlight classes)
+   ============================================================ */
+.c-shopee { color: #EE4D2D; }
+.c-ml     { color: #FFE600; }
+.c-magalu { color: #0086FF; }
+.c-tiktok { color: #69C9D0; }
+.c-amazon { color: #FF9900; }
+.c-pos    { color: #22C55E; }
+.c-neg    { color: #EF4444; }
+.c-stg    { color: #818CF8; }
+.c-num    { color: #FFFFFF; font-weight: 700; }
+
+/* ============================================================
+   WHATSAPP FLOATING BUTTON
+   ============================================================ */
+.wa-float {
+  position: fixed; bottom: 24px; right: 24px; z-index: 900;
+  width: 56px; height: 56px; border-radius: 50%;
+  background: #25D366;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+  text-decoration: none;
+  transition: transform 200ms ease, box-shadow 200ms ease;
+}
+.wa-float:hover { transform: scale(1.1); box-shadow: 0 6px 26px rgba(37, 211, 102, 0.5); }
+.wa-tip {
+  position: absolute; right: 70px; top: 50%; transform: translateY(-50%) translateX(6px);
+  background: #0E0E0E; color: #fff;
+  font-family: var(--font-body); font-size: 13px; font-weight: 500; white-space: nowrap;
+  padding: 8px 12px; border: 1px solid var(--border);
+  opacity: 0; pointer-events: none;
+  transition: opacity 200ms ease, transform 200ms ease;
+}
+.wa-tip::after {
+  content: ""; position: absolute; right: -5px; top: 50%; transform: translateY(-50%) rotate(45deg);
+  width: 9px; height: 9px; background: #0E0E0E; border-right: 1px solid var(--border); border-top: 1px solid var(--border);
+}
+.wa-float:hover .wa-tip { opacity: 1; transform: translateY(-50%) translateX(0); }
+@media (prefers-reduced-motion: reduce) {
+  .wa-float, .wa-tip { transition: none; }
+}
+
+/* ============================================================
+   PREMIUM FX
+   ============================================================ */
+
+/* 1 â custom cursor (desktop fine-pointer only) */
+.has-cursor, .has-cursor * { cursor: none !important; }
+.cursor-dot, .cursor-ring {
+  position: fixed; top: 0; left: 0; z-index: 9999;
+  border-radius: 50%; pointer-events: none;
+  transform: translate(-50%, -50%);
+  will-change: transform;
+  mix-blend-mode: screen;
+}
+.cursor-dot {
+  width: 7px; height: 7px;
+  background: var(--indigo);
+  box-shadow: 0 0 12px 2px rgba(99, 102, 241, 0.85);
+}
+.cursor-ring {
+  width: 32px; height: 32px;
+  border: 1px solid rgba(99, 102, 241, 0.55);
+  transition: width 200ms ease, height 200ms ease, border-color 200ms ease, background 200ms ease;
+}
+.cursor-ring.hot { width: 56px; height: 56px; background: rgba(99, 102, 241, 0.08); border-color: rgba(99, 102, 241, 0.9); }
+.cursor-ring.down { width: 22px; height: 22px; }
+
+/* 3 â glow following the mouse inside feature cards */
+.card-glow {
+  position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  opacity: 0; transition: opacity 260ms ease;
+  background: radial-gradient(240px circle at var(--gx, 50%) var(--gy, 50%), rgba(var(--gc, 99,102,241), 0.22), transparent 62%);
+}
+.card-mk-shopee .card-glow { --gc: 238,77,45; }
+.card-mk-ml .card-glow     { --gc: 255,230,0; }
+.card-mk-amazon .card-glow { --gc: 255,153,0; }
+.card-mk-magalu .card-glow { --gc: 0,134,255; }
+.card-mk-tiktok .card-glow { --gc: 105,201,208; }
+.card-mk-indigo .card-glow { --gc: 99,102,241; }
+.appmock:hover .card-glow { opacity: 1; }
+/* keep card content above the glow */
+.appmock .am-top, .appmock .am-body { position: relative; z-index: 1; }
+
+/* 4 â seller proof counter in hero */
+.hero-proof { display: flex; align-items: center; justify-content: center; gap: 12px; margin-top: 30px; font-size: 13.5px; color: var(--text-3); }
+.hero-proof .avs { display: flex; }
+.hero-proof .avs span {
+  width: 26px; height: 26px; border-radius: 50%;
+  margin-left: -8px; border: 1.5px solid #050505;
+  background: linear-gradient(135deg, rgba(99,102,241,0.9), rgba(139,92,246,0.7));
+  overflow: hidden;
+}
+.hero-proof .avs span img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.hero-proof .avs span:first-child { margin-left: 0; }
+.hero-proof b { font-family: var(--font-display); font-weight: 700; color: #fff; letter-spacing: -0.02em; }
+
+/* 5 â smooth section transitions (next section emerges from below) */
+.section-pad::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 130px;
+  background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.5));
+  pointer-events: none; z-index: 0;
+}
+
+/* 6 â CTA ripple */
+.btn { position: relative; overflow: hidden; }
+.btn > * { position: relative; z-index: 1; }
+.ripple {
+  position: absolute; border-radius: 50%; z-index: 0; pointer-events: none;
+  background: radial-gradient(circle, rgba(255,255,255,0.65), rgba(255,255,255,0) 70%);
+  transform: translate(-50%, -50%) scale(0);
+  animation: rippleFx 600ms ease-out forwards;
+}
+@keyframes rippleFx { to { transform: translate(-50%, -50%) scale(1); opacity: 0; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .ripple { animation: none; display: none; }
+}
