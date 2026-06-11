@@ -145,6 +145,12 @@ async function submitWaitlist() {
         data: new Date().toISOString()
       })
     });
+    if (typeof gtag === 'function') {
+      gtag('event', 'gerar_lead', {
+        event_category: 'waitlist',
+        event_label: 'formulario-landing'
+      });
+    }
     fieldsEl.style.display = 'none';
     successEl.classList.add('show');
   } catch (err) {
