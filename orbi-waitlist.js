@@ -97,6 +97,7 @@ document.addEventListener('DOMContentLoaded', function () {
 /* ---- Submit ---- */
 async function submitWaitlist() {
   const nome = (document.getElementById('wlNome').value || '').trim();
+  const email = (document.getElementById('wlEmail').value || '').trim();
   const whatsapp = (document.getElementById('wlWhatsapp').value || '').trim();
   const btn = document.getElementById('wlBtn');
   const btnText = document.getElementById('wlBtnText');
@@ -114,6 +115,12 @@ async function submitWaitlist() {
     document.getElementById('wlNome').focus();
     return;
   }
+  if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    errorEl.textContent = 'Informe um e-mail válido. Ex: voce@email.com';
+    errorEl.classList.add('show');
+    document.getElementById('wlEmail').focus();
+    return;
+  }
   const digitos = whatsapp.replace(/\D/g, '');
   if (digitos.length < 10) {
     errorEl.textContent = 'Informe um WhatsApp válido com DDD. Ex: (11) 99999-9999';
@@ -127,11 +134,12 @@ async function submitWaitlist() {
   spinner.style.display = 'block';
 
   try {
-    await fetch('https://hook.us2.make.com/hd8zh8yeivd7hn74l81ltonix4nuhu42', {
+    await fetch('https://n8n.srv1749628.hstgr.cloud/webhook/orbi-leads', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         nome: nome,
+        email: email,
         whatsapp: digitos,
         origem: 'landing-orbiseller',
         data: new Date().toISOString()
