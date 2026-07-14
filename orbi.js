@@ -210,3 +210,18 @@
     }
   })();
 })();
+
+/* ============================================================
+   Toggle de período dos planos (Mensal / Trimestral / Anual)
+   ============================================================ */
+(function(){
+  const toggle=document.querySelector('.plan-toggle');
+  if(!toggle)return;
+  function aplicar(periodo){
+    document.querySelectorAll('.plan-toggle-btn').forEach(b=>b.classList.toggle('is-active',b.dataset.periodo===periodo));
+    document.querySelectorAll('.pprice').forEach(el=>{const v=el.dataset['preco'+periodo.charAt(0).toUpperCase()+periodo.slice(1)];if(v)el.innerHTML=v;});
+    document.querySelectorAll('.psub').forEach(el=>{const v=el.dataset['sub'+periodo.charAt(0).toUpperCase()+periodo.slice(1)];el.textContent=v||'';});
+    document.querySelectorAll('.plan-cta').forEach(el=>{const v=el.dataset['link'+periodo.charAt(0).toUpperCase()+periodo.slice(1)];if(v)el.href=v;});
+  }
+  toggle.addEventListener('click',e=>{const btn=e.target.closest('.plan-toggle-btn');if(btn)aplicar(btn.dataset.periodo);});
+})();
