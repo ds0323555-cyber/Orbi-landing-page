@@ -64,68 +64,8 @@
   filter: blur(20px); z-index: -1; pointer-events: none;
 }
 
-/* ---------------- COCKPIT MOCKUP ---------------- */
-.cockpit {
-  border: 1px solid var(--border);
-  background: #060606;
-  display: grid;
-  grid-template-columns: 56px 1fr;
-  text-align: left;
-  overflow: hidden;
-  box-shadow: 0 40px 120px rgba(0,0,0,0.6);
-}
-.ck-rail { border-right: 1px solid var(--border); padding: 16px 0; display: flex; flex-direction: column; align-items: center; gap: 6px; background: #040404; }
-.ck-rail .ck-logo { width: 26px; height: 26px; margin-bottom: 14px; }
-.ck-ricon { width: 36px; height: 36px; display: grid; place-items: center; color: var(--text-3); transition: color 150ms, background 150ms; }
-.ck-ricon.active { color: var(--indigo); background: rgba(99,102,241,0.1); }
-.ck-ricon:hover { color: #fff; }
-.ck-main { min-width: 0; }
-.ck-top { display: flex; align-items: center; justify-content: space-between; padding: 14px 20px; border-bottom: 1px solid var(--border); }
-.ck-bread { display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--text-2); }
+/* ---------------- .ck-pill (usada na seção Comparador) ---------------- */
 .ck-pill { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; color: var(--indigo); border: 1px solid rgba(99,102,241,0.3); padding: 5px 10px; background: rgba(99,102,241,0.06); }
-.ck-body { padding: 20px; }
-.ck-kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
-.ck-kpi { border: 1px solid var(--border); background: var(--card); padding: 14px; }
-.ck-kpi .kl { font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-3); }
-.ck-kpi .kv { font-family: var(--font-display); font-weight: 700; font-size: 22px; letter-spacing: -0.03em; margin-top: 8px; }
-.ck-kpi .kd { font-size: 11px; margin-top: 4px; }
-.ck-up { color: var(--success); } .ck-down { color: var(--error); }
-
-.ck-grid { display: grid; grid-template-columns: 1.55fr 1fr; gap: 12px; margin-top: 12px; }
-.ck-panel { border: 1px solid var(--border); background: var(--card); padding: 16px; }
-.ck-panel h5 { font-family: var(--font-display); font-weight: 600; font-size: 13px; letter-spacing: -0.02em; }
-.ck-panel .sub { font-size: 11px; color: var(--text-3); margin-top: 2px; }
-
-/* mini sparkline / bars */
-.ck-bars { display: flex; align-items: flex-end; gap: 7px; height: 96px; margin-top: 16px; }
-.ck-bars .bar { flex: 1; background: linear-gradient(180deg, rgba(99,102,241,0.85), rgba(99,102,241,0.25)); min-height: 6px; }
-.ck-legend { display: flex; gap: 16px; margin-top: 12px; font-size: 11px; color: var(--text-3); }
-
-/* donut */
-.ck-share { display: flex; flex-direction: column; gap: 10px; margin-top: 14px; }
-.ck-share .row { display: flex; align-items: center; gap: 10px; font-size: 12px; }
-.ck-share .meter { flex: 1; height: 6px; background: rgba(255,255,255,0.06); position: relative; }
-.ck-share .meter i { position: absolute; left: 0; top: 0; bottom: 0; display: block; }
-.ck-share .pct { color: var(--text-2); width: 34px; text-align: right; }
-
-/* table */
-.ck-table { margin-top: 12px; border: 1px solid var(--border); background: var(--card); }
-.ck-table .thead, .ck-table .trow { display: grid; grid-template-columns: 2fr 1fr 1fr 0.9fr; gap: 10px; padding: 11px 16px; align-items: center; }
-.ck-table .thead { border-bottom: 1px solid var(--border); font-size: 10px; text-transform: uppercase; letter-spacing: 0.07em; color: var(--text-3); }
-.ck-table .trow { border-top: 1px solid var(--border); font-size: 12px; color: var(--text-2); }
-.ck-table .trow:first-of-type { border-top: none; }
-.ck-table .prod { color: #fff; display: flex; align-items: center; gap: 8px; }
-.ck-thumb { width: 24px; height: 24px; background: rgba(255,255,255,0.05); border: 1px solid var(--border); flex: none; }
-
-@media (max-width: 760px) {
-  .cockpit { grid-template-columns: 1fr; }
-  .ck-rail { flex-direction: row; border-right: none; border-bottom: 1px solid var(--border); padding: 8px 12px; gap: 4px; overflow-x: auto; }
-  .ck-rail .ck-logo { margin: 0 8px 0 0; }
-  .ck-kpis { grid-template-columns: repeat(2, 1fr); }
-  .ck-grid { grid-template-columns: 1fr; }
-  .ck-table .thead, .ck-table .trow { grid-template-columns: 1.6fr 1fr 0.8fr; }
-  .ck-table .col-hide { display: none; }
-}
 
 /* ---------------- S2 DOR ---------------- */
 .dor { text-align: center; }
@@ -502,3 +442,29 @@
   margin-top: -4px; margin-bottom: 8px; min-height: 18px;
 }
 .section-pad .plans { align-items: start; }
+
+/* ============================================================
+   HERO SHOTS — imagens reais do app com alternância dark/light
+   ============================================================ */
+.hero-shots {
+  position: relative;
+  border: 1px solid var(--border);
+  border-radius: 0;
+  overflow: hidden;
+  box-shadow: 0 40px 120px rgba(0,0,0,0.6);
+}
+.hero-shot { display: block; width: 100%; height: auto; }
+.hero-shot-dark { position: relative; z-index: 1; }
+.hero-shot-light {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  z-index: 2; opacity: 0;
+  animation: heroShotSwap 8s ease-in-out infinite;
+}
+@keyframes heroShotSwap {
+  0%, 40%  { opacity: 0; }
+  50%, 90% { opacity: 1; }
+  100%     { opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-shot-light { animation: none; opacity: 0; }
+}
