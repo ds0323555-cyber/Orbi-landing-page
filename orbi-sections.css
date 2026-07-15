@@ -468,3 +468,125 @@
 @media (prefers-reduced-motion: reduce) {
   .hero-shot-light { animation: none; opacity: 0; }
 }
+
+/* ============================================================
+   CARROSSEL DE IMAGENS REUTILIZÁVEL (.app-carousel)
+   Mesma pegada visual do hero (borda, cantos retos, sombra) com
+   cross-fade suave entre N slides. Genérico: reusável em qualquer
+   seção (Comparador, Cockpit, etc.) — basta trocar os src.
+
+   Uso:
+     <div class="app-carousel" data-interval="4000">   <!-- ms por slide (padrão 4000) -->
+       <img class="app-carousel-slide is-active" src="img/<pasta>/x-1.png" alt="...">
+       <img class="app-carousel-slide"           src="img/<pasta>/x-2.png" alt="...">
+       ... (quantos slides quiser; o 1º deve ter .is-active)
+     </div>
+   A rotação é feita pelo JS em orbi.js (alterna a classe .is-active).
+   A altura vem do 1º slide (fluxo normal); os demais ficam sobrepostos.
+   Ideal: todas as imagens com a mesma proporção.
+   ============================================================ */
+.app-carousel {
+  position: relative;
+  border: 1px solid var(--border);
+  border-radius: 0;
+  overflow: hidden;
+  box-shadow: 0 40px 120px rgba(0,0,0,0.6);
+}
+.app-carousel-slide {
+  display: block; width: 100%; height: auto;
+  opacity: 0; transition: opacity .8s ease-in-out;
+}
+/* slides após o primeiro ficam empilhados sobre ele */
+.app-carousel-slide:not(:first-child) {
+  position: absolute; inset: 0; height: 100%;
+}
+.app-carousel-slide.is-active { opacity: 1; }
+@media (prefers-reduced-motion: reduce) {
+  .app-carousel-slide { transition: none; }
+}
+
+/* ============================================================
+   LIGHTBOX GENÉRICO + dica de clique nos carrosséis/galerias
+   ------------------------------------------------------------
+   Funciona em QUALQUER galeria: todo .app-carousel (herda
+   automaticamente) e qualquer container com class="lightbox-group"
+   viram uma galeria; suas <img> são os itens. Clicar numa imagem
+   abre o lightbox com setas ‹ › para navegar dentro do grupo.
+   Fecha no X, no clique fora (fundo escuro) ou com ESC.
+   O JS (orbi.js) cria o overlay e injeta a dica de clique.
+
+   COMO REUSAR numa nova seção:
+     - Se usar .app-carousel: nada a fazer, já herda o lightbox.
+     - Galeria fora de carrossel: dê class="lightbox-group" ao
+       container das <img>. Sem duplicar CSS/JS.
+   ============================================================ */
+
+/* --- dica de clique na vitrine --- */
+.app-carousel,
+.lightbox-group { cursor: pointer; }
+/* só o slide visível recebe clique (os sobrepostos ficam inertes),
+   assim o lightbox sempre abre na imagem que está aparecendo */
+.app-carousel-slide { pointer-events: none; }
+.app-carousel-slide.is-active { pointer-events: auto; }
+
+.lightbox-hint {
+  position: absolute; top: 12px; right: 12px; z-index: 3;
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 7px 9px; border: 1px solid var(--border);
+  background: rgba(0,0,0,.55); color: #fff;
+  font-size: 12px; line-height: 1; letter-spacing: -0.01em;
+  opacity: .5; pointer-events: none;
+  -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px);
+  transition: opacity .2s ease, background .2s ease;
+}
+.lightbox-hint svg { display: block; }
+.lightbox-hint-txt {
+  max-width: 0; overflow: hidden; white-space: nowrap; opacity: 0;
+  transition: max-width .25s ease, opacity .2s ease;
+}
+.app-carousel:hover .lightbox-hint,
+.lightbox-group:hover .lightbox-hint { opacity: 1; background: rgba(0,0,0,.72); }
+.app-carousel:hover .lightbox-hint-txt,
+.lightbox-group:hover .lightbox-hint-txt { max-width: 120px; opacity: 1; }
+
+/* --- overlay do lightbox (injetado no <body> pelo JS) --- */
+.lightbox {
+  position: fixed; inset: 0; z-index: 1000;
+  display: flex; align-items: center; justify-content: center;
+  padding: 24px;
+  background: rgba(0,0,0,.86);
+  opacity: 0; visibility: hidden; pointer-events: none;
+  transition: opacity .2s ease, visibility .2s ease;
+}
+.lightbox.is-open { opacity: 1; visibility: visible; pointer-events: auto; }
+.lightbox-img {
+  max-width: min(1200px, 92vw); max-height: 88vh;
+  width: auto; height: auto; display: block;
+  border: 1px solid var(--border); border-radius: 0;
+  background: #060606; box-shadow: 0 40px 120px rgba(0,0,0,.7);
+}
+.lightbox-close,
+.lightbox-nav {
+  position: absolute; z-index: 2;
+  display: inline-flex; align-items: center; justify-content: center;
+  color: #fff; background: rgba(0,0,0,.5); border: 1px solid var(--border);
+  cursor: pointer; -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px);
+  transition: background .15s ease, color .15s ease;
+}
+.lightbox-close:hover,
+.lightbox-nav:hover { background: var(--indigo); }
+.lightbox-close { top: 18px; right: 18px; width: 44px; height: 44px; font-size: 24px; }
+.lightbox-nav { top: 50%; transform: translateY(-50%); width: 52px; height: 64px; font-size: 30px; }
+.lightbox-prev { left: 16px; }
+.lightbox-next { right: 16px; }
+body.lightbox-open { overflow: hidden; }
+@media (max-width: 600px) {
+  .lightbox { padding: 12px; }
+  .lightbox-nav { width: 44px; height: 54px; font-size: 26px; }
+  .lightbox-prev { left: 8px; }
+  .lightbox-next { right: 8px; }
+  .lightbox-close { top: 10px; right: 10px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .lightbox, .lightbox-hint, .lightbox-hint-txt { transition: none; }
+}

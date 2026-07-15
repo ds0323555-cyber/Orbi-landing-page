@@ -225,3 +225,118 @@
   }
   toggle.addEventListener('click',e=>{const btn=e.target.closest('.plan-toggle-btn');if(btn)aplicar(btn.dataset.periodo);});
 })();
+
+/* ============================================================
+   Carrossel de imagens reutilizável (.app-carousel)
+   Alterna os .app-carousel-slide via cross-fade (opacity),
+   alternando a classe .is-active. Reusável em qualquer seção:
+   basta criar um .app-carousel com N imagens (a 1ª com .is-active)
+   e, opcionalmente, data-interval="<ms>" (padrão 4000).
+   Respeita prefers-reduced-motion: mostra só o 1º slide.
+   ============================================================ */
+(function(){
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.querySelectorAll('.app-carousel').forEach(function(car){
+    const slides = car.querySelectorAll('.app-carousel-slide');
+    if (slides.length < 2 || reduce) return;
+    const interval = parseInt(car.dataset.interval, 10) || 4000;
+    let i = 0;
+    setInterval(function(){
+      if (document.body.classList.contains('lightbox-open')) return; // pausa com lightbox aberto
+      slides[i].classList.remove('is-active');
+      i = (i + 1) % slides.length;
+      slides[i].classList.add('is-active');
+    }, interval);
+  });
+})();
+
+/* ============================================================
+   LIGHTBOX GENÉRICO para galerias de imagens
+   ------------------------------------------------------------
+   Qualquer .app-carousel (herda automático) ou qualquer container
+   com class="lightbox-group" vira uma galeria: clicar numa <img>
+   abre o lightbox; ‹ › navegam DENTRO daquele grupo; fecha no X,
+   no clique no fundo escuro ou com ESC (setas do teclado também
+   navegam). Pausa o carrossel enquanto aberto (via body.lightbox-open,
+   checado pelo loop do carrossel). Funciona em desktop e mobile.
+
+   COMO REUSAR numa nova seção:
+     - Se usar .app-carousel: nada a fazer.
+     - Galeria fora de carrossel: dê class="lightbox-group" ao
+       container das <img>. O overlay e a dica são criados sozinhos.
+   ============================================================ */
+(function(){
+  const groups = document.querySelectorAll('.app-carousel, .lightbox-group');
+  if (!groups.length) return;
+
+  // overlay criado uma única vez e reaproveitado por todas as galerias
+  const lb = document.createElement('div');
+  lb.className = 'lightbox';
+  lb.setAttribute('role', 'dialog');
+  lb.setAttribute('aria-modal', 'true');
+  lb.innerHTML =
+    '<button class="lightbox-close" type="button" aria-label="Fechar">×</button>' +
+    '<button class="lightbox-nav lightbox-prev" type="button" aria-label="Imagem anterior">‹</button>' +
+    '<img class="lightbox-img" alt="">' +
+    '<button class="lightbox-nav lightbox-next" type="button" aria-label="Próxima imagem">›</button>';
+  document.body.appendChild(lb);
+  const lbImg = lb.querySelector('.lightbox-img');
+
+  let current = [];   // itens {src, alt} do grupo aberto
+  let idx = 0;
+
+  const hintSVG =
+    '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true">' +
+      '<circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.8"></circle>' +
+      '<path d="M20 20l-3.4-3.4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path>' +
+      '<path d="M11 8.2v5.6M8.2 11h5.6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"></path>' +
+    '</svg>';
+
+  function show(i){
+    if (!current.length) return;
+    idx = (i + current.length) % current.length;
+    lbImg.src = current[idx].src;
+    lbImg.alt = current[idx].alt || '';
+  }
+  function open(items, i){
+    current = items;
+    document.body.classList.add('lightbox-open');
+    lb.classList.add('is-open');
+    show(i);
+  }
+  function close(){
+    lb.classList.remove('is-open');
+    document.body.classList.remove('lightbox-open');
+  }
+
+  groups.forEach(function(group){
+    const imgs = Array.prototype.slice.call(group.querySelectorAll('img'));
+    if (!imgs.length) return;
+
+    // dica de clique (uma por galeria)
+    if (!group.querySelector('.lightbox-hint')) {
+      const hint = document.createElement('span');
+      hint.className = 'lightbox-hint';
+      hint.setAttribute('aria-hidden', 'true');
+      hint.innerHTML = hintSVG + '<span class="lightbox-hint-txt">Ampliar</span>';
+      group.appendChild(hint);
+    }
+
+    const items = imgs.map(function(im){ return { src: im.currentSrc || im.src, alt: im.alt }; });
+    imgs.forEach(function(im, i){
+      im.addEventListener('click', function(){ open(items, i); });
+    });
+  });
+
+  lb.querySelector('.lightbox-next').addEventListener('click', function(e){ e.stopPropagation(); show(idx + 1); });
+  lb.querySelector('.lightbox-prev').addEventListener('click', function(e){ e.stopPropagation(); show(idx - 1); });
+  lb.querySelector('.lightbox-close').addEventListener('click', function(e){ e.stopPropagation(); close(); });
+  lb.addEventListener('click', function(e){ if (e.target === lb) close(); }); // clique no fundo fecha
+
+  document.addEventListener('keydown', function(e){
+    if (!lb.classList.contains('is-open')) return;
+    if (e.key === 'Escape') close();
+    else if (e.key === 'ArrowRight') show(idx + 1);
+    else if (e.key === 'ArrowLeft') show(idx - 1);
+  });
+})();
