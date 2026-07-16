@@ -269,21 +269,15 @@
         </ul>
       </div>
       <div class="feat-visual">
-        <div class="card card-lum card-hoverable card-mk-indigo appmock">
-          <span class="card-glow"></span>
-          <div class="am-top"><span class="am-title">Comparador · Kit Organizador</span><span class="ck-pill">Melhor canal</span></div>
-          <div class="am-body">
-            <div class="cmp-bars">
-              <div class="cmp-bar"><span class="am-k"><span class="badge badge-shopee"><span class="dot"></span>Shopee</span></span><span class="track"><i style="width:92%;background:var(--shopee)"></i></span><span class="val" style="color:var(--success)">R$ 24,52</span></div>
-              <div class="cmp-bar"><span class="am-k"><span class="badge badge-ml"><span class="dot"></span>Meli</span></span><span class="track"><i style="width:71%;background:var(--ml)"></i></span><span class="val">R$ 18,90</span></div>
-              <div class="cmp-bar"><span class="am-k"><span class="badge badge-amazon"><span class="dot"></span>Amazon</span></span><span class="track"><i style="width:58%;background:var(--amazon)"></i></span><span class="val">R$ 15,40</span></div>
-              <div class="cmp-bar"><span class="am-k"><span class="badge badge-magalu"><span class="dot"></span>Magalu</span></span><span class="track"><i style="width:39%;background:var(--magalu)"></i></span><span class="val">R$ 9,80</span></div>
-            </div>
-            <div class="ai-msg bot" style="margin-top:16px"><span class="ai-tag">Orbi IA</span>Para este produto, a Shopee oferece o maior lucro líquido. Considere realocar o estoque do Magalu.</div>
-          </div>
+        <!-- Carrossel reutilizável: alterna 2 prints reais do Comparador.
+             Mesma estrutura da Calculadora — herda o lightbox genérico (.app-carousel). -->
+        <div class="app-carousel" data-interval="4000">
+          <img class="app-carousel-slide is-active" src="img/comparador/comp-1.png" alt="Comparador de marketplaces do Orbi Seller — tela 1">
+          <img class="app-carousel-slide" src="img/comparador/comp-2.png" alt="Comparador de marketplaces do Orbi Seller — tela 2">
         </div>
       </div>
     </div>
+    <!-- LINHA 1 — Cockpit: texto + carrossel de prints reais -->
     <div class="feat reveal from-left">
       <div class="feat-copy">
         <span class="badge badge-magalu"><span class="dot"></span>Cockpit</span>
@@ -293,6 +287,27 @@
           <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg> Todas as lojas em um lugar</li>
           <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg> Projeção de fechamento do mês</li>
           <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg> Alertas automáticos de risco</li>
+        </ul>
+      </div>
+      <div class="feat-visual">
+        <!-- Carrossel reutilizável: 3 prints reais do Cockpit. Herda o lightbox genérico (.app-carousel). -->
+        <div class="app-carousel" data-interval="4000">
+          <img class="app-carousel-slide is-active" src="img/cockpit/cockpit-1.png" alt="Cockpit do Orbi Seller — tela 1">
+          <img class="app-carousel-slide" src="img/cockpit/cockpit-2.png" alt="Cockpit do Orbi Seller — tela 2">
+          <img class="app-carousel-slide" src="img/cockpit/cockpit-3.png" alt="Cockpit do Orbi Seller — tela 3">
+        </div>
+      </div>
+    </div>
+    <!-- LINHA 2 — KPI da Loja: texto + mockup KPI da loja -->
+    <div class="feat reverse reveal from-right">
+      <div class="feat-copy">
+        <span class="badge badge-amazon"><span class="dot"></span>KPI IA</span>
+        <h3>KPI da Loja com IA</h3>
+        <p>Você não tem indicadores claros para decidir o que escalar e o que pausar. O KPI importa seus dados de vendas e a IA gera um plano de ação com recomendações práticas baseadas nos seus números reais.</p>
+        <ul class="feat-points">
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg> Importação de CSV de qualquer ERP</li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg> Análise automática por IA</li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg> Plano de ação gerado instantaneamente</li>
         </ul>
       </div>
       <div class="feat-visual">
@@ -308,15 +323,16 @@
         </div>
       </div>
     </div>
-    <div class="feat reverse reveal from-right">
+    <!-- LINHA 3 — Criador de Anúncios: texto + mockup Otimizador -->
+    <div class="feat reveal from-left">
       <div class="feat-copy">
-        <span class="badge badge-amazon"><span class="dot"></span>KPI IA</span>
-        <h3>KPI da Loja com IA</h3>
-        <p>Você não tem indicadores claros para decidir o que escalar e o que pausar. O KPI importa seus dados de vendas e a IA gera um plano de ação com recomendações práticas baseadas nos seus números reais.</p>
+        <span class="badge badge-shopee"><span class="dot"></span>Criador de Anúncio</span>
+        <h3>Criador de Anúncios com IA</h3>
+        <p>Você trava na hora de escrever título e descrição que vendem, ou perde horas montando foto de produto. O Criador de Anúncios do Orbi gera, a partir do nome do produto e uma foto de referência, três variações de título, três de descrição e nove imagens profissionais — prontas pra você escolher e publicar no marketplace.</p>
         <ul class="feat-points">
-          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg> Importação de CSV de qualquer ERP</li>
-          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg> Análise automática por IA</li>
-          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg> Plano de ação gerado instantaneamente</li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg> 3 títulos + 3 descrições gerados por IA</li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg> 9 imagens profissionais (fundo branco, ambiente e em uso)</li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg> A partir de uma foto de referência</li>
         </ul>
       </div>
       <div class="feat-visual">
@@ -334,15 +350,16 @@
         </div>
       </div>
     </div>
-    <div class="feat reveal from-left">
+    <!-- LINHA 4 — Assistente Orbi IA: texto + mockup do chat -->
+    <div class="feat reverse reveal from-right">
       <div class="feat-copy">
-        <span class="badge badge-tiktok"><span class="dot"></span>Ads</span>
-        <h3>Cálculo e Gestão de Ads</h3>
-        <p>Você investe em Ads sem saber se o retorno é real. O Orbi calcula o ROAS real por loja e por produto — e te mostra onde aumentar verba e onde cortar antes de queimar mais dinheiro.</p>
+        <span class="badge badge-tiktok"><span class="dot"></span>Assistente</span>
+        <h3>Assistente Orbi IA</h3>
+        <p>Você tem dúvida sobre a operação, mas não sabe a quem perguntar — e decidir no achismo custa caro. O Assistente Orbi responde sobre margem, precificação e estratégia de marketplace direto no chat, ajudando você a transformar seus números em decisão prática.</p>
         <ul class="feat-points">
-          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg> ROAS real por produto</li>
-          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg> Decisão baseada em dado</li>
-          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg> Para de queimar verba no lugar errado</li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg> Tira dúvidas de margem, preço e estratégia</li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg> Respostas práticas pra sua operação</li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg> Disponível a qualquer hora, direto no app</li>
         </ul>
       </div>
       <div class="feat-visual">
@@ -419,7 +436,6 @@
           <tr class="reveal"><td class="feat-col">Cockpit em tempo real</td><td class="cmp-orbi cmp-yes">✓</td><td class="cmp-no">✗</td><td class="cmp-no">✗</td><td class="cmp-yes">✓</td><td class="cmp-no">✗</td></tr>
           <tr class="reveal"><td class="feat-col">KPI com análise por IA</td><td class="cmp-orbi cmp-yes">✓</td><td class="cmp-no">✗</td><td class="cmp-no">✗</td><td class="cmp-mid">~</td><td class="cmp-yes">✓</td></tr>
           <tr class="reveal"><td class="feat-col">Geração de conteúdo por IA</td><td class="cmp-orbi cmp-yes">✓</td><td class="cmp-no">✗</td><td class="cmp-no">✗</td><td class="cmp-no">✗</td><td class="cmp-no">✗</td></tr>
-          <tr class="reveal"><td class="feat-col">Cálculo e gestão de Ads</td><td class="cmp-orbi cmp-yes">✓</td><td class="cmp-mid">~</td><td class="cmp-no">✗</td><td class="cmp-mid">~</td><td class="cmp-yes">✓</td></tr>
           <tr class="reveal"><td class="feat-col">Assistente IA no app</td><td class="cmp-orbi cmp-yes">✓</td><td class="cmp-no">✗</td><td class="cmp-no">✗</td><td class="cmp-no">✗</td><td class="cmp-no">✗</td></tr>
           <tr class="reveal"><td class="feat-col">Disponível 24h todo dia</td><td class="cmp-orbi cmp-yes">✓</td><td class="cmp-yes">✓</td><td class="cmp-yes">✓</td><td class="cmp-yes">✓</td><td class="cmp-no">✗</td></tr>
           <tr class="reveal"><td class="feat-col">Preço mensal</td><td class="cmp-orbi" style="font-family:var(--font-display);font-weight:600;color:#fff">a partir de R$ 0</td><td>—</td><td>R$ 0</td><td class="cmp-mid">R$ 300+</td><td class="cmp-mid">R$ 1.500+</td></tr>
