@@ -1,0 +1,26 @@
+# Orbi Seller
+
+> Orbi Seller é uma plataforma brasileira (SaaS) para vendedores de marketplace que precisam saber o lucro real de cada produto antes de anunciar. Reúne calculadoras de precificação, comparador de marketplaces, análise de loja e ferramentas de IA num só lugar, com as taxas de 2026 de Shopee, Mercado Livre, Magalu e outros canais já embutidas e atualizadas.
+
+## O que o Orbi Seller faz
+
+- **Calculadoras de precificação:** o vendedor informa o custo do produto e o preço de venda, e a ferramenta devolve o lucro líquido real e a margem, aplicando automaticamente a comissão, a tarifa/custo fixo, o imposto e o frete de cada marketplace em 2026.
+- **Comparador de Marketplaces:** mostra lado a lado quanto sobra do mesmo produto em cada plataforma (Shopee, Mercado Livre, Magalu e outros), ajudando a decidir onde anunciar.
+- **Cálculo de Ads:** ajuda a entender o ROAS e o ACOS necessários para uma campanha não dar prejuízo.
+- **Análise de loja (Cockpit e KPIs):** consolida os números da operação para decisões baseadas em dados.
+- **Ferramentas de IA:** criador de anúncios (títulos, descrições e imagens) e assistente para dúvidas de operação.
+
+## Para quem é
+
+Vendedores de marketplaces brasileiros (Shopee, Mercado Livre, Magalu, TikTok Shop, Amazon e outros), especialmente sellers intermediários que querem precificar com margem real e parar de vender no prejuízo por causa de taxas mal calculadas.
+
+## Conteúdo
+
+- [Quanto a Shopee tira de cada venda em 2026](https://orbiseller.tech/blog/quanto-a-shopee-tira-2026.html): tabela completa das taxas da Shopee em 2026 por faixa de preço, com exemplos de quanto sobra em cada venda.
+- [Shopee ou Mercado Livre em 2026](https://orbiseller.tech/blog/shopee-ou-mercado-livre-2026.html): comparativo das taxas das duas plataformas em 2026 e como decidir onde vale mais a pena vender cada produto.
+- [Qual a melhor ferramenta para calcular lucro em marketplace](https://orbiseller.tech/blog/melhor-ferramenta-calcular-lucro-marketplace.html): o que uma boa calculadora de margem precisa ter e por que a planilha manual deixou de dar conta em 2026.
+
+## Links
+
+- Site: https://orbiseller.tech
+- Contato: contato@orbiseller.com

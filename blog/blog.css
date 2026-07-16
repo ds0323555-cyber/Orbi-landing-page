@@ -1,0 +1,118 @@
+/* ============================================================
+   ORBI SELLER — Blog
+   Reaproveita o design system da landing (orbi.css / orbi-sections.css):
+   mesmas variáveis de cor, tipografia (Plus Jakarta Sans + Inter),
+   cantos retos (border-radius: 0) e paleta escura.
+   ============================================================ */
+
+/* Nav do blog: fundo sólido sempre (não depende do JS de scroll da landing) */
+.nav.blog-nav {
+  background: rgba(0, 0, 0, 0.72);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--border);
+}
+.nav.blog-nav .nav-links a.active { color: #fff; }
+
+/* ---------------- shell ---------------- */
+.blog-main { padding-top: 120px; padding-bottom: 96px; }
+.blog-narrow { max-width: 760px; }
+
+/* breadcrumb / voltar */
+.blog-back {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 13px; color: var(--text-3); text-decoration: none;
+  margin-bottom: 28px; transition: color 150ms ease;
+}
+.blog-back:hover { color: var(--text); }
+.blog-back svg { flex: none; }
+
+/* ---------------- índice ---------------- */
+.blog-head { max-width: 62ch; margin-bottom: 56px; }
+.blog-head .label { display: block; margin-bottom: 18px; }
+.blog-head h1 { font-size: clamp(32px, 5vw, 52px); letter-spacing: -0.045em; line-height: 1.05; color: #fff; }
+.blog-head p { margin-top: 20px; font-size: 17px; color: var(--text-2); line-height: 1.6; }
+
+.blog-list { display: grid; gap: 20px; }
+.blog-card {
+  display: block; text-decoration: none;
+  border: 1px solid var(--border); background: var(--card);
+  padding: 28px 30px; transition: border-color 160ms ease, background 160ms ease;
+}
+.blog-card:hover { border-color: var(--border-strong); background: var(--card-hover); }
+.blog-card .blog-card-tag {
+  display: inline-block; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--indigo); margin-bottom: 14px;
+}
+.blog-card h2 {
+  font-size: clamp(20px, 2.4vw, 26px); letter-spacing: -0.03em; line-height: 1.25; color: #fff;
+}
+.blog-card p { margin-top: 12px; font-size: 15px; color: var(--text-2); line-height: 1.6; }
+.blog-card .blog-card-more {
+  display: inline-flex; align-items: center; gap: 7px;
+  margin-top: 18px; font-size: 14px; font-weight: 500; color: var(--indigo);
+}
+.blog-card:hover .blog-card-more { gap: 11px; }
+.blog-card .blog-card-more svg { flex: none; transition: transform 160ms ease; }
+
+/* ---------------- artigo (prosa) ---------------- */
+.post { max-width: 760px; }
+.post h1 {
+  font-size: clamp(30px, 4.4vw, 44px); letter-spacing: -0.045em; line-height: 1.1;
+  color: #fff; margin-bottom: 8px;
+}
+.post-lead {
+  font-size: 19px; line-height: 1.65; color: var(--text);
+  padding: 20px 22px; border: 1px solid var(--border); background: var(--card);
+  margin: 28px 0 8px;
+}
+.post-lead strong { color: #fff; }
+.post h2 {
+  font-size: clamp(22px, 2.8vw, 30px); letter-spacing: -0.03em; line-height: 1.25;
+  color: #fff; margin-top: 52px; margin-bottom: 16px;
+}
+.post p { font-size: 17px; line-height: 1.75; color: var(--text-2); margin-top: 18px; }
+.post strong { color: #fff; font-weight: 600; }
+.post a { color: var(--indigo); text-decoration: underline; text-underline-offset: 2px; }
+.post a:hover { color: var(--indigo-hover); }
+
+.post ul, .post ol { margin-top: 18px; padding-left: 22px; display: flex; flex-direction: column; gap: 10px; }
+.post li { font-size: 17px; line-height: 1.65; color: var(--text-2); }
+.post li::marker { color: var(--indigo); }
+.post li strong { color: #fff; }
+
+.post hr { border: 0; height: 1px; background: var(--border); margin: 44px 0; }
+
+/* tabelas */
+.post-table-wrap { margin-top: 24px; overflow-x: auto; border: 1px solid var(--border); }
+.post table { width: 100%; border-collapse: collapse; font-size: 15px; min-width: 460px; }
+.post thead th {
+  text-align: left; font-family: var(--font-display); font-weight: 600; color: #fff;
+  background: var(--black-alt); padding: 13px 16px; border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+}
+.post tbody td { padding: 12px 16px; border-top: 1px solid var(--border); color: var(--text-2); }
+.post tbody tr:first-child td { border-top: none; }
+.post tbody td:first-child { color: #fff; }
+
+/* CTA final do artigo */
+.post-cta {
+  margin-top: 56px; padding: 32px; border: 1px solid var(--border); background: var(--card);
+  text-align: center;
+}
+.post-cta h3 { font-size: 22px; letter-spacing: -0.03em; color: #fff; }
+.post-cta p { margin-top: 10px; font-size: 15px; color: var(--text-2); }
+.post-cta .btn { margin-top: 22px; }
+
+/* rodapé simples do blog */
+.blog-footer {
+  border-top: 1px solid var(--border); margin-top: 0; padding: 40px 0;
+  text-align: center; color: var(--text-3); font-size: 13px;
+}
+.blog-footer a { color: var(--text-2); text-decoration: none; }
+.blog-footer a:hover { color: #fff; }
+
+@media (max-width: 640px) {
+  .blog-card { padding: 22px 20px; }
+  .post-lead { padding: 16px 18px; font-size: 17px; }
+}
