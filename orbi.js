@@ -340,3 +340,141 @@
     else if (e.key === 'ArrowLeft') show(idx - 1);
   });
 })();
+
+/* ============================================================
+   MINI CALCULADORA SHOPEE (demo interativa da landing)
+   Taxas 2026 — fonte: taxas públicas Shopee Brasil (Mar/2026).
+   ============================================================ */
+(function () {
+  'use strict';
+  const root = document.getElementById('calculadora-demo');
+  if (!root) return;
+
+  const $ = (id) => document.getElementById(id);
+
+  // --- parsing/format BR ---
+  function parseBR(v) {
+    if (v == null) return 0;
+    const n = parseFloat(String(v).replace(/\./g, '').replace(',', '.').replace(/[^\d.-]/g, ''));
+    return isNaN(n) ? 0 : n;
+  }
+  const fmtBRL = (n) =>
+    (n < 0 ? '-' : '') + 'R$ ' + Math.abs(n).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  const fmtPct = (n) =>
+    n.toLocaleString('pt-BR', { minimumFractionDigits: 1, maximumFractionDigits: 1 }) + '%';
+
+  // --- tabela de faixas Shopee 2026 (por preço unitário) ---
+  function shopeeBand(price) {
+    if (price < 8)          return { rate: 0.20, fixed: +(price * 0.5).toFixed(2), label: '20% + tarifa reduzida (produto < R$ 8)' };
+    if (price <= 79.99)     return { rate: 0.20, fixed: 4,  label: '20% + R$ 4,00 (até R$ 79,99)' };
+    if (price <= 99.99)     return { rate: 0.14, fixed: 16, label: '14% + R$ 16,00 (R$ 80–99,99)' };
+    if (price <= 199.99)    return { rate: 0.14, fixed: 20, label: '14% + R$ 20,00 (R$ 100–199,99)' };
+    if (price <= 499.99)    return { rate: 0.14, fixed: 24, label: '14% + R$ 24,00 (R$ 200–499,99)' };
+    return                         { rate: 0.14, fixed: 26, label: '14% + R$ 26,00 (acima de R$ 500)' };
+  }
+
+  // --- estado dos segmentos/toggles ---
+  const seg = $('calcVendedor');
+  seg.addEventListener('click', (e) => {
+    const btn = e.target.closest('.calc-seg-btn');
+    if (!btn) return;
+    seg.querySelectorAll('.calc-seg-btn').forEach((b) => b.classList.remove('is-active'));
+    btn.classList.add('is-active');
+  });
+
+  const adsToggle = $('calcAds');
+  const adsPctWrap = $('calcAdsPctWrap');
+  adsToggle.addEventListener('change', () => {
+    adsPctWrap.hidden = !adsToggle.checked;
+    if (adsToggle.checked) $('calcAdsPct').focus();
+  });
+
+  const regime = $('calcRegime');
+  const aliqWrap = $('calcAliquotaWrap');
+  regime.addEventListener('change', () => {
+    const manual = regime.value === 'simples' || regime.value === 'outro';
+    aliqWrap.hidden = !manual;
+    if (regime.value === 'simples' && !$('calcAliquota').value) $('calcAliquota').value = '6';
+  });
+
+  // --- cálculo ---
+  function calcular() {
+    const custo = parseBR($('calcCusto').value);
+    const preco = parseBR($('calcPreco').value);
+    const qtd = Math.max(1, parseInt($('calcQtd').value, 10) || 1);
+    const embalagem = parseBR($('calcEmbalagem').value);
+
+    if (preco <= 0 || custo <= 0) {
+      $('calcError').hidden = false;
+      $('calcResult').hidden = true;
+      return;
+    }
+    $('calcError').hidden = true;
+
+    const cpf = seg.querySelector('.calc-seg-btn.is-active').dataset.val === 'cpf';
+    const destaque = $('calcDestaque').checked;
+    const band = shopeeBand(preco);
+
+    // taxas Shopee por item
+    let comissaoRate = band.rate + (destaque ? 0.035 : 0);
+    let comissao = Math.min(preco * comissaoRate, 100); // teto R$ 100 de comissão percentual
+    let taxaItem = comissao + band.fixed + (cpf ? 3 : 0);
+
+    // totais
+    const faturamento = preco * qtd;
+    const totalTaxas = taxaItem * qtd;
+
+    let adsPct = 0;
+    if (adsToggle.checked) adsPct = Math.max(0, parseBR($('calcAdsPct').value));
+    const totalAds = faturamento * (adsPct / 100);
+
+    let aliq = 0;
+    if (regime.value === 'simples' || regime.value === 'outro') aliq = Math.max(0, parseBR($('calcAliquota').value));
+    const totalImposto = faturamento * (aliq / 100);
+
+    const totalCusto = (custo + embalagem) * qtd;
+
+    const repasse = faturamento - totalTaxas;
+    const lucro = repasse - totalAds - totalImposto - totalCusto;
+    const margem = faturamento > 0 ? (lucro / faturamento) * 100 : 0;
+
+    // render
+    $('calcBand').textContent = 'Faixa: ' + band.label;
+    $('rFaturamento').textContent = fmtBRL(faturamento);
+    $('rTaxas').textContent = '– ' + fmtBRL(totalTaxas);
+    $('rCusto').textContent = '– ' + fmtBRL(totalCusto);
+    $('rRepasse').textContent = fmtBRL(repasse);
+
+    $('rAdsRow').hidden = !(totalAds > 0);
+    $('rAds').textContent = '– ' + fmtBRL(totalAds);
+    $('rImpostoRow').hidden = !(totalImposto > 0);
+    $('rImposto').textContent = '– ' + fmtBRL(totalImposto);
+
+    $('rLucro').textContent = fmtBRL(lucro);
+    $('rMargem').textContent = fmtPct(margem);
+
+    const hlL = $('rLucro').parentElement, hlM = $('rMargem').parentElement;
+    const loss = lucro < 0;
+    hlL.classList.toggle('is-loss', loss); hlL.classList.toggle('is-profit', !loss);
+    hlM.classList.toggle('is-loss', loss); hlM.classList.toggle('is-profit', !loss);
+
+    $('calcResult').hidden = false;
+  }
+
+  function limpar() {
+    ['calcCusto', 'calcEmbalagem', 'calcPreco', 'calcAdsPct', 'calcAliquota'].forEach((id) => ($(id).value = ''));
+    $('calcQtd').value = '1';
+    $('calcDestaque').checked = false;
+    adsToggle.checked = false; adsPctWrap.hidden = true;
+    regime.value = '0'; aliqWrap.hidden = true;
+    seg.querySelectorAll('.calc-seg-btn').forEach((b, i) => b.classList.toggle('is-active', i === 0));
+    $('calcResult').hidden = true;
+    $('calcError').hidden = true;
+  }
+
+  $('calcBtn').addEventListener('click', calcular);
+  $('calcClear').addEventListener('click', limpar);
+  root.querySelectorAll('input').forEach((inp) => {
+    inp.addEventListener('keydown', (e) => { if (e.key === 'Enter') { e.preventDefault(); calcular(); } });
+  });
+})();

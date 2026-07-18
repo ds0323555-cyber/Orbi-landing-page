@@ -381,6 +381,139 @@
   </div>
 </section>
 
+<!-- S5.5 MINI CALCULADORA SHOPEE (demo interativa — "gostinho do Orbi") -->
+<section class="section-pad" id="calculadora-demo">
+  <div class="wrap">
+    <div class="shead center reveal">
+      <span class="badge badge-shopee" style="margin:0 auto;"><span class="dot"></span>Demonstração</span>
+      <h2 class="h2">Experimente agora: quanto sobra de verdade na Shopee?</h2>
+      <p>Uma amostra da Calculadora do Orbi, com as taxas atualizadas de 2026. Preencha e veja seu lucro real em segundos.</p>
+    </div>
+
+    <div class="calc reveal">
+      <div class="calc-head">
+        <div>
+          <h3 class="calc-title">Calculadora Shopee</h3>
+          <p class="calc-sub">Tabela de comissões atualizada — Março/2026</p>
+        </div>
+        <span class="badge badge-shopee"><span class="dot"></span>Shopee</span>
+      </div>
+
+      <!-- Custos do Produto -->
+      <div class="calc-block">
+        <span class="calc-block-label">Custos do Produto</span>
+        <div class="calc-grid">
+          <div class="calc-field calc-field-cost">
+            <label for="calcCusto">Custo do Produto <span class="calc-req">*</span></label>
+            <div class="calc-cost-row">
+              <div class="calc-money"><span>R$</span><input class="input" id="calcCusto" type="text" inputmode="decimal" placeholder="0,00"></div>
+              <div class="calc-qtd">
+                <label for="calcQtd">Qtd</label>
+                <input class="input" id="calcQtd" type="number" min="1" step="1" value="1">
+              </div>
+            </div>
+          </div>
+          <div class="calc-field">
+            <label for="calcEmbalagem">Custo de Embalagem</label>
+            <div class="calc-money"><span>R$</span><input class="input" id="calcEmbalagem" type="text" inputmode="decimal" placeholder="0,00"></div>
+          </div>
+          <div class="calc-field">
+            <label for="calcPreco">Preço de Venda Pretendido <span class="calc-req">*</span></label>
+            <div class="calc-money"><span>R$</span><input class="input" id="calcPreco" type="text" inputmode="decimal" placeholder="0,00"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tipo de Vendedor -->
+      <div class="calc-block">
+        <span class="calc-block-label">Tipo de Vendedor</span>
+        <div class="calc-seg" id="calcVendedor">
+          <button type="button" class="calc-seg-btn is-active" data-val="cnpj">CNPJ</button>
+          <button type="button" class="calc-seg-btn" data-val="cpf">CPF alto volume (+450 ped/90d)</button>
+        </div>
+      </div>
+
+      <!-- Opções de Venda -->
+      <div class="calc-block">
+        <span class="calc-block-label">Opções de Venda</span>
+        <label class="calc-toggle-row">
+          <span class="calc-toggle-txt">
+            <strong>Campanha de Destaque</strong>
+            <small>Adiciona 3,5% à comissão</small>
+          </span>
+          <span class="calc-switch"><input type="checkbox" id="calcDestaque"><span class="calc-switch-track"></span></span>
+        </label>
+        <label class="calc-toggle-row">
+          <span class="calc-toggle-txt">
+            <strong>Shopee Ads</strong>
+            <small>% do faturamento gasto com Ads</small>
+          </span>
+          <span class="calc-toggle-right">
+            <span class="calc-inline-pct" id="calcAdsPctWrap" hidden>
+              <input class="input" id="calcAdsPct" type="text" inputmode="decimal" placeholder="0"><span>%</span>
+            </span>
+            <span class="calc-switch"><input type="checkbox" id="calcAds"><span class="calc-switch-track"></span></span>
+          </span>
+        </label>
+      </div>
+
+      <!-- Regime Tributário -->
+      <div class="calc-block">
+        <span class="calc-block-label">Regime Tributário</span>
+        <div class="calc-grid calc-grid-2">
+          <div class="calc-field">
+            <label for="calcRegime">Tipo</label>
+            <select class="input" id="calcRegime">
+              <option value="0">MEI (não recolhe por venda)</option>
+              <option value="simples">Simples Nacional</option>
+              <option value="outro">Outro / alíquota manual</option>
+            </select>
+          </div>
+          <div class="calc-field" id="calcAliquotaWrap" hidden>
+            <label for="calcAliquota">Alíquota sobre a venda</label>
+            <div class="calc-money calc-money-suffix"><input class="input" id="calcAliquota" type="text" inputmode="decimal" placeholder="6"><span>%</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="calc-actions">
+        <button type="button" class="btn btn-primary" id="calcBtn">Calcular</button>
+        <button type="button" class="btn btn-secondary" id="calcClear">Limpar</button>
+      </div>
+
+      <p class="calc-error" id="calcError" hidden>Preencha o custo do produto e o preço de venda para calcular.</p>
+
+      <!-- Resultado -->
+      <div class="calc-result" id="calcResult" hidden>
+        <div class="calc-result-band" id="calcBand"></div>
+        <div class="calc-result-rows">
+          <div class="calc-row"><span>Faturamento (preço × qtd)</span><b id="rFaturamento">R$ 0,00</b></div>
+          <div class="calc-row calc-row-neg"><span>Taxas Shopee (comissão + tarifa fixa)</span><b id="rTaxas">– R$ 0,00</b></div>
+          <div class="calc-row calc-row-neg" id="rAdsRow" hidden><span>Shopee Ads</span><b id="rAds">– R$ 0,00</b></div>
+          <div class="calc-row calc-row-neg" id="rImpostoRow" hidden><span>Imposto</span><b id="rImposto">– R$ 0,00</b></div>
+          <div class="calc-row calc-row-neg"><span>Custo do produto + embalagem</span><b id="rCusto">– R$ 0,00</b></div>
+          <div class="calc-row calc-row-strong"><span>Você recebe da Shopee</span><b id="rRepasse">R$ 0,00</b></div>
+        </div>
+        <div class="calc-result-highlight">
+          <div class="calc-hl-lucro">
+            <span>Lucro líquido</span>
+            <b id="rLucro">R$ 0,00</b>
+          </div>
+          <div class="calc-hl-margem">
+            <span>Margem</span>
+            <b id="rMargem">0%</b>
+          </div>
+        </div>
+        <div class="calc-cta">
+          <p>Esse é só um pedacinho. No Orbi você calcula em <strong>5 marketplaces</strong>, compara canais e recebe recomendações da IA.</p>
+          <a href="#lista-espera" class="btn btn-primary">Quero a versão completa do Orbi</a>
+        </div>
+      </div>
+      <p class="calc-disclaimer">Valores estimados com base nas taxas públicas da Shopee para 2026. A calculadora completa do Orbi considera todas as faixas, campanhas e regras específicas da sua loja.</p>
+    </div>
+  </div>
+</section>
+
 <!-- S6 PROVA SOCIAL -->
 <section class="section-pad">
   <div class="wrap">
