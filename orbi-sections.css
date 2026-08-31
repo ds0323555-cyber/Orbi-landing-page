@@ -156,7 +156,7 @@
 .imgrid .cell.tag-ai::after { content: "IA"; position: absolute; top: 6px; right: 6px; font-size: 9px; letter-spacing: 0.06em; color: var(--indigo); }
 
 /* ---------------- S6 PROVA SOCIAL ---------------- */
-.testi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.testi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; }
 .testi p { font-size: 15px; line-height: 1.6; color: rgba(255,255,255,0.86); }
 .testi .who { display: flex; align-items: center; gap: 12px; margin-top: 22px; }
 .testi .av { width: 38px; height: 38px; border-radius: 50%; background: rgba(255,255,255,0.06); border: 1px solid var(--border); flex: none; display: grid; place-items: center; font-family: var(--font-display); font-weight: 600; font-size: 14px; color: var(--text-2); }
