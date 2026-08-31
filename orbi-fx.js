@@ -71,39 +71,6 @@
     });
   }
 
-  /* ---------- 4 Â· Seller proof counter ---------- */
-  const seller = document.getElementById('sellerCount');
-  if (seller) {
-    const fmt = (n) => Math.round(n).toLocaleString('pt-BR');
-    let val = 2000;
-    const target = 2147;
-    if (reduce) {
-      seller.textContent = fmt(target);
-    } else {
-      // count up once, then tick slowly to feel live
-      const start = performance.now();
-      const dur = 1400;
-      function up(now) {
-        const p = Math.min((now - start) / dur, 1);
-        const eased = 1 - Math.pow(1 - p, 3);
-        seller.textContent = fmt(2000 + (target - 2000) * eased);
-        if (p < 1) requestAnimationFrame(up);
-        else { val = target; live(); }
-      }
-      function live() {
-        setTimeout(() => {
-          val += Math.floor(Math.random() * 3) + 1;
-          seller.textContent = fmt(val);
-          seller.style.transition = 'color 200ms ease';
-          seller.style.color = '#a5a8ff';
-          setTimeout(() => { seller.style.color = '#fff'; }, 260);
-          live();
-        }, 3500 + Math.random() * 4000);
-      }
-      requestAnimationFrame(up);
-    }
-  }
-
   /* ---------- 6 Â· CTA ripple + delayed navigation ---------- */
   document.querySelectorAll('.btn').forEach((btn) => {
     btn.addEventListener('click', (e) => {

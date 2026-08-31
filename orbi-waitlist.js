@@ -55,11 +55,6 @@
 .wl-success p { color: rgba(255,255,255,0.6); font-size: 15px; text-align: center; max-width: 36ch; margin: 0; }
 .wl-error { margin-top: 10px; color: #f87171; font-size: 13px; display: none; text-align: center; }
 .wl-error.show { display: block; }
-.wl-social-proof { margin-top: 24px; display: flex; align-items: center; justify-content: center; gap: 10px; color: rgba(255,255,255,0.35); font-size: 13px; }
-.wl-social-proof .avs { display: flex; }
-.wl-social-proof .avs span { width: 28px; height: 28px; border-radius: 50%; border: 2px solid #0A0A0F; overflow: hidden; margin-left: -8px; background: #1C1C26; }
-.wl-social-proof .avs span:first-child { margin-left: 0; }
-.wl-social-proof .avs span img { width: 100%; height: 100%; object-fit: cover; }
 @media (max-width: 520px) { .wl-form { padding: 0 4px; } }
 `;
   const style = document.createElement('style');

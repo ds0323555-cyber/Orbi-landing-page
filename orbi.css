@@ -475,23 +475,6 @@ section { position: relative; z-index: 1; }
 /* keep card content above the glow */
 .appmock .am-top, .appmock .am-body { position: relative; z-index: 1; }
 
-/* 4 â seller proof counter in hero */
-.hero-proof { display: flex; align-items: center; justify-content: center; gap: 12px; margin-top: 30px; font-size: 13.5px; color: var(--text-3); }
-.hero-proof .avs { display: flex; }
-.hero-proof .avs span {
-  width: 26px; height: 26px; border-radius: 50%;
-  margin-left: -8px; border: 1.5px solid #050505;
-  background: linear-gradient(135deg, rgba(99,102,241,0.9), rgba(139,92,246,0.7));
-  overflow: hidden;
-}
-.hero-proof .avs span img {
-  width: 100%; height: 100%;
-  object-fit: cover;
-  display: block;
-}
-.hero-proof .avs span:first-child { margin-left: 0; }
-.hero-proof b { font-family: var(--font-display); font-weight: 700; color: #fff; letter-spacing: -0.02em; }
-
 /* 5 â smooth section transitions (next section emerges from below) */
 .section-pad::after {
   content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 130px;
