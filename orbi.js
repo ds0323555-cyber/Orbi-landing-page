@@ -368,10 +368,10 @@
   // --- tabela de faixas Shopee 2026 (por preço unitário) ---
   function shopeeBand(price) {
     if (price < 8)          return { rate: 0.20, fixed: +(price * 0.5).toFixed(2), label: '20% + tarifa reduzida (produto < R$ 8)' };
-    if (price <= 79.99)     return { rate: 0.20, fixed: 4,  label: '20% + R$ 4,00 (até R$ 79,99)' };
+    if (price <= 79.99)     return { rate: 0.20, fixed: 4.5, label: '20% + R$ 4,50 (até R$ 79,99)' };
     if (price <= 99.99)     return { rate: 0.14, fixed: 16, label: '14% + R$ 16,00 (R$ 80–99,99)' };
     if (price <= 199.99)    return { rate: 0.14, fixed: 20, label: '14% + R$ 20,00 (R$ 100–199,99)' };
-    if (price <= 499.99)    return { rate: 0.14, fixed: 24, label: '14% + R$ 24,00 (R$ 200–499,99)' };
+    if (price <= 499.99)    return { rate: 0.14, fixed: 26, label: '14% + R$ 26,00 (R$ 200–499,99)' };
     return                         { rate: 0.14, fixed: 26, label: '14% + R$ 26,00 (acima de R$ 500)' };
   }
 
