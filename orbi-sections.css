@@ -733,6 +733,12 @@ body.lightbox-open { overflow: hidden; }
   padding: 11px 0; font-size: 14px; color: var(--text-2);
   border-bottom: 1px solid var(--border);
 }
+/* ⚠ `display: flex` acima VENCE o `display: none` que o atributo `hidden`
+   ganha da folha de estilo do navegador (regra de classe > folha do agente).
+   Sem esta linha, as linhas opcionais do resultado (Ads, Imposto, adicional de
+   CPF, campanha) aparecem zeradas mesmo desligadas — era o comportamento da
+   calculadora da home antes de virar página. */
+.calc-row[hidden] { display: none; }
 .calc-row b { color: #fff; font-variant-numeric: tabular-nums; white-space: nowrap; }
 .calc-row-neg b { color: var(--text-2); }
 .calc-row-strong { font-weight: 600; color: #fff; }
@@ -767,3 +773,9 @@ select.input { appearance: none; -webkit-appearance: none; cursor: pointer;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%23888' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
   background-repeat: no-repeat; background-position: right 14px center; padding-right: 36px;
 }
+
+/* Cartão de entrada da calculadora na home: a calculadora em si mora em
+   /calculadora-shopee, para ter URL própria e ser indexável. */
+.calc-entrada { text-align: center; }
+.calc-entrada-txt { margin-top: 18px; color: var(--text-2); font-size: 15px; }
+.calc-entrada .calc-actions { justify-content: center; }

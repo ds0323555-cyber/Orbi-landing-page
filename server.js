@@ -14,6 +14,24 @@ app.get(['/blog', '/blog/'], (req, res) => {
   res.sendFile(path.join(__dirname, 'blog', 'index.html'), { acceptRanges: false });
 });
 
+// Calculadora Shopee: página com URL própria e indexável.
+// A canonical é SEM barra final, então a versão com barra redireciona 301 —
+// as duas servindo 200 seriam conteúdo duplicado para o Google.
+// ⚠ Precisa vir ANTES do catch-all: sem estas rotas, /calculadora-shopee cai
+// na curinga e devolve a HOME com 200, que é o pior desfecho possível para
+// SEO (o buscador indexa a home no lugar da página).
+// ⚠ UM handler só para as duas formas: com `strict routing` desligado (o
+// padrão do Express) '/calculadora-shopee' e '/calculadora-shopee/' são a
+// MESMA rota, então registrar a versão com barra para redirecionar faria a
+// sem barra redirecionar para si mesma, em laço. Quem decide é a URL crua.
+app.get('/calculadora-shopee', (req, res) => {
+  const [caminho, busca] = req.originalUrl.split('?');
+  if (caminho.endsWith('/')) {
+    return res.redirect(301, '/calculadora-shopee' + (busca ? '?' + busca : ''));
+  }
+  res.sendFile(path.join(__dirname, 'calculadora-shopee.html'), { acceptRanges: false });
+});
+
 // Fallback:
 // - rotas /blog/* não encontradas voltam ao índice do blog;
 // - qualquer outra rota volta para a landing (index.html), como antes.
