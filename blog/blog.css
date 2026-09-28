@@ -104,6 +104,15 @@
 .post-cta p { margin-top: 10px; font-size: 15px; color: var(--text-2); }
 .post-cta .btn { margin-top: 22px; }
 
+/* ⚠ O botão do CTA é um <a> DENTRO de .post, e por isso `.post a` acima
+   (especificidade 0,1,1 — classe + tipo) vence `.btn-primary` do orbi.css
+   (0,1,0 — só classe). O texto saía pintado de var(--indigo), a MESMA cor do
+   fundo do botão: um retângulo roxo vazio. O :hover precisa de regra própria
+   porque `.post a:hover` é (0,2,1) e repintaria o texto de indigo-hover. */
+.post .btn { text-decoration: none; }
+.post .btn-primary,
+.post .btn-primary:hover { color: #fff; }
+
 /* rodapé simples do blog */
 .blog-footer {
   border-top: 1px solid var(--border); margin-top: 0; padding: 40px 0;
