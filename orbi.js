@@ -480,3 +480,14 @@
     inp.addEventListener('keydown', (e) => { if (e.key === 'Enter') { e.preventDefault(); calcular(); } });
   });
 })();
+
+/* Repassa a query string da página (utm_*, oppref etc.) aos links para o app */
+(function () {
+  var qs = window.location.search.slice(1);
+  if (!qs) return;
+  document.querySelectorAll('a[href^="https://orbiseller.com"]').forEach(function (a) {
+    var parts = a.getAttribute('href').split('#');
+    parts[0] += (parts[0].indexOf('?') === -1 ? '?' : '&') + qs;
+    a.setAttribute('href', parts.join('#'));
+  });
+})();

@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="/orbi.css">
 <link rel="stylesheet" href="/orbi-sections.css">
 <link rel="stylesheet" href="/blog/blog.css">
+    <script>!function(w,d,s,u){if(w.oaiq)return;var q=function(){q.q.push(arguments)};q.q=[];w.oaiq=q;var j=d.createElement(s);j.async=1;j.src=u;var f=d.getElementsByTagName(s)[0];f.parentNode.insertBefore(j,f)}(window,document,"script","https://bzrcdn.openai.com/sdk/oaiq.min.js");oaiq("init",{pixelId:"PVn5rvPNUL6oJkkbG4fR2A",debug:false});</script>
 </head>
 <body>
 
@@ -85,5 +86,17 @@
   </div>
 </footer>
 
+<script>
+/* Repassa a query string da página (utm_*, oppref etc.) aos links para o app */
+(function () {
+  var qs = window.location.search.slice(1);
+  if (!qs) return;
+  document.querySelectorAll('a[href^="https://orbiseller.com"]').forEach(function (a) {
+    var parts = a.getAttribute('href').split('#');
+    parts[0] += (parts[0].indexOf('?') === -1 ? '?' : '&') + qs;
+    a.setAttribute('href', parts.join('#'));
+  });
+})();
+</script>
 </body>
 </html>
