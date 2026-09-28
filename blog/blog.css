@@ -2,7 +2,7 @@
    ORBI SELLER — Blog
    Reaproveita o design system da landing (orbi.css / orbi-sections.css):
    mesmas variáveis de cor, tipografia (Plus Jakarta Sans + Inter),
-   cantos retos (border-radius: 0) e paleta escura.
+   paleta escura e o mesmo arredondamento do app (tokens --radius-* do orbi.css).
    ============================================================ */
 
 /* Nav do blog: fundo sólido sempre (não depende do JS de scroll da landing) */
@@ -38,7 +38,8 @@
   display: block; text-decoration: none;
   border: 1px solid var(--border); background: var(--card);
   padding: 28px 30px; transition: border-color 160ms ease, background 160ms ease;
-}
+
+  border-radius: var(--radius-xl);}
 .blog-card:hover { border-color: var(--border-strong); background: var(--card-hover); }
 .blog-card .blog-card-tag {
   display: inline-block; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
@@ -65,7 +66,8 @@
   font-size: 19px; line-height: 1.65; color: var(--text);
   padding: 20px 22px; border: 1px solid var(--border); background: var(--card);
   margin: 28px 0 8px;
-}
+
+  border-radius: var(--radius-xl);}
 .post-lead strong { color: #fff; }
 .post h2 {
   font-size: clamp(22px, 2.8vw, 30px); letter-spacing: -0.03em; line-height: 1.25;
@@ -84,7 +86,8 @@
 .post hr { border: 0; height: 1px; background: var(--border); margin: 44px 0; }
 
 /* tabelas */
-.post-table-wrap { margin-top: 24px; overflow-x: auto; border: 1px solid var(--border); }
+.post-table-wrap { margin-top: 24px; overflow-x: auto; border: 1px solid var(--border); 
+  border-radius: var(--radius-xl);}
 .post table { width: 100%; border-collapse: collapse; font-size: 15px; min-width: 460px; }
 .post thead th {
   text-align: left; font-family: var(--font-display); font-weight: 600; color: #fff;
@@ -99,7 +102,8 @@
 .post-cta {
   margin-top: 56px; padding: 32px; border: 1px solid var(--border); background: var(--card);
   text-align: center;
-}
+
+  border-radius: var(--radius-xl);}
 .post-cta h3 { font-size: 22px; letter-spacing: -0.03em; color: #fff; }
 .post-cta p { margin-top: 10px; font-size: 15px; color: var(--text-2); }
 .post-cta .btn { margin-top: 22px; }
