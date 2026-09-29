@@ -131,15 +131,33 @@
     setTimeout(loop, 2600);
   }
 
-  /* ---------- Demo video modal ---------- */
-  (function demoModal() {
-    const modal = document.getElementById('demoModal');
-    const openBtn = document.getElementById('openDemo');
-    if (!modal || !openBtn) return;
-    const open = () => { modal.classList.add('open'); modal.setAttribute('aria-hidden', 'false'); document.body.style.overflow = 'hidden'; };
-    const close = () => { modal.classList.remove('open'); modal.setAttribute('aria-hidden', 'true'); document.body.style.overflow = ''; };
-    openBtn.addEventListener('click', open);
-    modal.querySelectorAll('[data-close], #closeDemo').forEach((el) => el.addEventListener('click', close));
-    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && modal.classList.contains('open')) close(); });
+  /* ---------- Vídeo tutorial do hero ----------
+     Substituiu o modal de demonstração, que era um PLACEHOLDER: tinha ícone
+     de play e o rótulo "Vídeo de demonstração · 2 min", e nenhum vídeo por
+     trás. O tutorial de verdade agora toca no próprio quadro do hero. */
+  (function heroVideo() {
+    const video = document.getElementById('heroVideo');
+    const botao = document.getElementById('heroVideoPlay');
+    if (!video || !botao) return;
+    const quadro = video.parentElement;
+
+    /* Um evento por sessão de página: `play` dispara também ao despausar. */
+    let jaContou = false;
+    const medir = (evento) => {
+      if (typeof gtag === 'function') gtag('event', evento);
+    };
+
+    botao.addEventListener('click', () => {
+      quadro.classList.add('is-playing');
+      video.play();
+    });
+
+    /* Cobre também quem aperta play direto nos controles nativos. */
+    video.addEventListener('play', () => {
+      quadro.classList.add('is-playing');
+      if (!jaContou) { jaContou = true; medir('tutorial_play'); }
+    });
+
+    video.addEventListener('ended', () => medir('tutorial_complete'));
   })();
 })();

@@ -51,6 +51,26 @@
   "logo": "https://orbiseller.tech/android-chrome-512x512.png"
 }
 </script>
+
+<!-- SCHEMA MARKUP (JSON-LD) — Vídeo tutorial do hero -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "VideoObject",
+  "name": "Tutorial do Orbi Seller: calculadoras, Saúde da margem, KPI e Criador de Anúncio",
+  "description": "Tutorial narrado do Orbi Seller, mostrando as calculadoras de preço e lucro, a Saúde da margem com o lucro real por anúncio, o KPI da loja e o Criador de Anúncio.",
+  "thumbnailUrl": "https://orbiseller.tech/img/hero-dark.png",
+  "uploadDate": "2026-09-28",
+  "duration": "PT11M40S",
+  "contentUrl": "https://orbiseller.tech/video/orbi-tutorial.mp4",
+  "embedUrl": "https://orbiseller.tech/",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Orbi Seller",
+    "url": "https://orbiseller.tech"
+  }
+}
+</script>
 </head>
 <body>
 
@@ -90,12 +110,6 @@
     </div>
     <h1 class="display reveal">Pare de gerir seu marketplace no achismo. Comece a decidir com dados.</h1>
     <p class="subhead reveal">Com o Orbi você sabe exatamente quanto está lucrando, onde está perdendo dinheiro e o que fazer para crescer — tudo em tempo real, sem planilha, sem achismo.</p>
-    <div class="hero-demo reveal" style="transition-delay:870ms;">
-      <button type="button" class="demo-btn" id="openDemo">
-        <span class="demo-play"><svg width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M3 2l7 4-7 4V2z" fill="currentColor"></path></svg></span>
-        Ver demonstração <span class="demo-min">(2 min)</span>
-      </button>
-    </div>
     <div class="hero-cta reveal">
       <a href="https://orbiseller.com" class="btn btn-primary btn-lg">Começar 30 dias grátis</a>
       <a href="#funcionalidades" class="btn btn-secondary btn-lg">
@@ -117,11 +131,19 @@
         Sem contrato ou fidelidade
       </span>
     </div>
-    <!-- HERO SHOTS (imagens reais do app, alternância dark/light) -->
+    <!-- HERO: tutorial narrado do Orbi, no mesmo quadro que antes mostrava
+         o print do Cockpit. A capa é aquele print (versão dark). -->
     <div class="hero-mock-wrap reveal">
-      <div class="hero-shots">
-        <img class="hero-shot hero-shot-dark" src="img/hero-dark.png" alt="Cockpit do Orbi Seller — tema escuro">
-        <img class="hero-shot hero-shot-light" src="img/hero-light.png" alt="Cockpit do Orbi Seller — tema claro">
+      <div class="hero-shots hero-video">
+        <video id="heroVideo" class="hero-video-el"
+               controls preload="metadata" playsinline
+               poster="img/hero-dark.png">
+          <source src="/video/orbi-tutorial.mp4" type="video/mp4">
+          Seu navegador não reproduz vídeo. <a href="/video/orbi-tutorial.mp4">Baixe o tutorial</a>.
+        </video>
+        <button type="button" class="hero-video-play" id="heroVideoPlay" aria-label="Assistir ao tutorial do Orbi Seller">
+          <svg width="34" height="34" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M8 5l11 7-11 7V5z" fill="currentColor"></path></svg>
+        </button>
       </div>
     </div>
   </div>
@@ -666,19 +688,6 @@
 </footer>
 
 <!-- DEMO MODAL -->
-<div class="modal" id="demoModal" aria-hidden="true">
-  <div class="modal-overlay" data-close></div>
-  <div class="modal-box" role="dialog" aria-modal="true" aria-label="Demonstração do Orbi">
-    <button type="button" class="modal-close" id="closeDemo" aria-label="Fechar">
-      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 4l8 8M12 4l-4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"></path></svg>
-    </button>
-    <div class="modal-player">
-      <div class="modal-play"><svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M8 5l11 7-11 7V5z" fill="currentColor"></path></svg></div>
-      <span class="modal-ph-label">Vídeo de demonstração · 2 min</span>
-    </div>
-  </div>
-</div>
-
 <!-- WHATSAPP FLOAT -->
 <a class="wa-float" href="https://wa.me/5511925086817?text=Ola%2C%20Tudo%20bem%3F%20Quero%20saber%20mais%20sobre%20o%20Orbi" target="_blank" rel="noopener" aria-label="Fale com a gente no WhatsApp">
   <span class="wa-tip">Fale com a gente</span>

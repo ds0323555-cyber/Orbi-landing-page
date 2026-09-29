@@ -4,6 +4,21 @@ const app = express();
 
 const PORT = process.env.PORT || 3000;
 
+// VÍDEO: precisa de Range, e por isso vem ANTES do static geral.
+//
+// ⚠ O `acceptRanges: false` logo abaixo é DELIBERADO e não pode sair: o
+// crawler do WhatsApp mandava Range na home e abortava a prévia ao receber
+// 206. Mas vídeo sem Range quebra de dois jeitos — Safari/iPhone se recusam
+// a tocar MP4 que não aceite Range, e nos demais navegadores não dá para
+// avançar na linha do tempo.
+//
+// A saída é de ESCOPO MÍNIMO: só /video responde 206; HTML, imagens e
+// og-image continuam sob o `false`, então a prévia do WhatsApp segue intacta.
+app.use('/video', express.static(path.join(__dirname, 'video'), {
+  acceptRanges: true,
+  maxAge: '7d'
+}));
+
 // Serve arquivos estáticos do diretório (landing, assets e todos os arquivos do blog).
 // Isso já resolve /blog/<artigo>.html, /blog/blog.css, /orbi.css, etc.
 app.use(express.static(path.join(__dirname), { acceptRanges: false }));

@@ -280,22 +280,7 @@
 /* ============================================================
    HERO ADDITIONS â demo button + security seals
    ============================================================ */
-.hero-demo { margin-top: 18px; }
-.demo-btn {
-  display: inline-flex; align-items: center; gap: 9px;
-  background: none; border: none; cursor: pointer;
-  font-family: var(--font-body); font-size: 14px; color: var(--text-2);
-  padding: 6px 4px; transition: color 150ms ease;
-}
-.demo-btn:hover { color: #fff; }
-.demo-play {
-  width: 24px; height: 24px; flex: none; border-radius: 50%;
-  display: grid; place-items: center;
-  border: 1px solid rgba(99,102,241,0.5); color: var(--indigo);
-  background: rgba(99,102,241,0.08); transition: background 150ms ease, transform 150ms ease;
-}
-.demo-btn:hover .demo-play { background: rgba(99,102,241,0.18); transform: scale(1.06); }
-.demo-min { color: var(--text-3); }
+/* .hero-demo e .demo-* saíram junto com a bolinha "Ver demonstração". */
 
 .hero-seals { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 14px 26px; margin-top: 26px; }
 .hero-seals .seal {
@@ -394,55 +379,8 @@
 /* ============================================================
    DEMO MODAL
    ============================================================ */
-.modal {
-  position: fixed; inset: 0; z-index: 1000;
-  display: none; align-items: center; justify-content: center;
-  padding: 24px;
-}
-.modal.open { display: flex; }
-.modal-overlay {
-  position: absolute; inset: 0;
-  background: rgba(0,0,0,0.72);
-  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
-  animation: modalFade 200ms ease-out;
-}
-.modal-box {
-  position: relative; z-index: 1;
-  width: min(900px, 100%);
-  animation: modalIn 240ms cubic-bezier(.2,.8,.25,1);
-}
-.modal-close {
-  position: absolute; top: -44px; right: 0;
-  width: 34px; height: 34px;
-  display: grid; place-items: center;
-  background: rgba(255,255,255,0.06); border: 1px solid var(--border);
-  color: var(--text-2); cursor: pointer;
-  transition: border-color 150ms ease, color 150ms ease;
-
-  border-radius: var(--radius-pill);}
-.modal-close:hover { color: #fff; border-color: var(--border-strong); }
-.modal-player {
-  position: relative; aspect-ratio: 16/9; width: 100%;
-  overflow: hidden;
-  background: #060606;
-  border: 1px solid rgba(99,102,241,0.35);
-  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px;
-  box-shadow: 0 40px 120px rgba(0,0,0,0.6);
-
-  border-radius: var(--radius-2xl);}
-.modal-play {
-  width: 64px; height: 64px; border-radius: 50%;
-  display: grid; place-items: center;
-  color: var(--indigo);
-  border: 1px solid rgba(99,102,241,0.5); background: rgba(99,102,241,0.1);
-}
-.modal-ph-label { font-size: 13px; color: var(--text-3); letter-spacing: 0.02em; }
-@keyframes modalFade { from { opacity: 0; } to { opacity: 1; } }
-@keyframes modalIn { from { opacity: 0; transform: translateY(12px) scale(.98); } to { opacity: 1; transform: none; } }
-@media (prefers-reduced-motion: reduce) {
-  .modal-overlay, .modal-box { animation: none; }
-}
-
+/* O modal de demonstração foi removido: era um placeholder sem vídeo, e o
+   tutorial de verdade agora toca no próprio quadro do hero. */
 /* ============================================================
    TOGGLE DE PERÍODO (Planos)
    ============================================================ */
@@ -480,19 +418,46 @@
   box-shadow: 0 40px 120px rgba(0,0,0,0.6);
 }
 .hero-shot { display: block; width: 100%; height: auto; }
-.hero-shot-dark { position: relative; z-index: 1; }
-.hero-shot-light {
-  position: absolute; inset: 0; width: 100%; height: 100%;
-  z-index: 2; opacity: 0;
-  animation: heroShotSwap 8s ease-in-out infinite;
+
+/* ── Vídeo do hero ──────────────────────────────────────────────
+   O quadro é o MESMO .hero-shots (borda, raio, sombra); só ganha a
+   proporção fixa. 16:9 porque é a proporção do vídeo (1920x1080) — assim
+   ele preenche exato e não sobra tarja.
+   ⚠ A CAPA não é 16:9: img/hero-dark.png tem 1920x1016 (1,890). `cover`
+   chegou a ser usado e CORTAVA ~3,2% de cada lado — o bastante para truncar
+   os rótulos do menu lateral do app ("CIPAL" no lugar de "PRINCIPAL").
+   `contain` mostra a capa inteira e deixa uma tarja de ~3% em cima e embaixo,
+   que some contra o #060606 do fundo.
+   O VÍDEO é 1920x1080, exatamente 16:9, então preenche o quadro sem tarja
+   nenhuma — a diferença só existe enquanto a capa está à mostra. */
+.hero-video { aspect-ratio: 16 / 9; }
+.hero-video-el {
+  display: block; width: 100%; height: 100%;
+  object-fit: contain;
+  background: #060606;
 }
-@keyframes heroShotSwap {
-  0%, 40%  { opacity: 0; }
-  50%, 90% { opacity: 1; }
-  100%     { opacity: 0; }
+
+/* Botão de play sobre a capa. Some no primeiro play (o JS tira o .is-on do
+   pai) e devolve o comando aos controles nativos, que continuam ligados. */
+.hero-video-play {
+  position: absolute; left: 50%; top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 3;
+  width: 88px; height: 88px;
+  display: grid; place-items: center;
+  padding-left: 6px;                 /* centro ÓPTICO do triângulo */
+  border: none; border-radius: 50%;
+  background: var(--indigo); color: #fff;
+  cursor: pointer;
+  box-shadow: 0 10px 40px rgba(99, 102, 241, 0.5);
+  transition: transform 160ms ease, background 160ms ease;
 }
-@media (prefers-reduced-motion: reduce) {
-  .hero-shot-light { animation: none; opacity: 0; }
+.hero-video-play:hover { background: var(--indigo-hover); transform: translate(-50%, -50%) scale(1.06); }
+.hero-video.is-playing .hero-video-play { display: none; }
+
+@media (max-width: 720px) {
+  .hero-video-play { width: 64px; height: 64px; }
+  .hero-video-play svg { width: 26px; height: 26px; }
 }
 
 /* ============================================================
