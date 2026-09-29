@@ -26,6 +26,12 @@
   --indigo: #6366F1;
   --indigo-hover: #4F52D4;
   --indigo-soft: rgba(99, 102, 241, 0.12);
+  /* Roxo de TEXTO. Não é o --indigo do botão: aquele dá 4,42:1 sobre o fundo
+     escuro do site, abaixo do mínimo de 4,5:1 da WCAG AA para texto. Este é o
+     mesmo roxo, um degrau mais claro, e mede 6,62:1. O --indigo continua
+     certo onde é FUNDO (botão, badge), porque ali o contraste é do texto
+     branco por cima dele. */
+  --indigo-text: #818CF8;
 
   /* Marketplaces */
   --shopee: #EE4D2D;
@@ -410,15 +416,16 @@ section { position: relative; z-index: 1; }
 /* ============================================================
    CHROMATIC HIERARCHY (word-level highlight classes)
    ============================================================ */
-.c-shopee { color: #EE4D2D; }
-.c-ml     { color: #FFE600; }
-.c-magalu { color: #0086FF; }
-.c-tiktok { color: #69C9D0; }
-.c-amazon { color: #FF9900; }
-.c-pos    { color: #22C55E; }
-.c-neg    { color: #EF4444; }
-.c-stg    { color: #818CF8; }
-.c-num    { color: #FFFFFF; font-weight: 700; }
+/* ⚠ AS NOVE CLASSES DE "PSICOLOGIA DAS CORES" SAÍRAM: .c-shopee, .c-ml,
+   .c-magalu, .c-tiktok, .c-amazon, .c-pos (verde), .c-neg (vermelho),
+   .c-stg e .c-num. O texto pintava marketplace na cor da marca DELES e
+   dividia o vocabulário em verde (lucro, margem, dados...) e vermelho
+   (prejuízo, achismo, queimando...) — um parágrafo chegava a ter cinco
+   cores. Agora há UMA cor de destaque, a da marca, e ela é rara.
+   As cores de marketplace continuam existindo no site onde descrevem um
+   objeto e não uma palavra: --shopee, --ml, --magalu e --tiktok seguem em
+   uso nos badges e nos cartões. */
+.hl-brand { color: var(--indigo-text); }
 
 /* ============================================================
    WHATSAPP FLOATING BUTTON
