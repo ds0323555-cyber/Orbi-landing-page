@@ -359,14 +359,3 @@
    Shopee ENCERROU em março/2026. Num item de R$ 1.000 ela cobrava
    R$ 126,00 onde a Shopee cobra R$ 166,00.
    ============================================================ */
-
-/* Repassa a query string da página (utm_*, oppref etc.) aos links para o app */
-(function () {
-  var qs = window.location.search.slice(1);
-  if (!qs) return;
-  document.querySelectorAll('a[href^="https://orbiseller.com"]').forEach(function (a) {
-    var parts = a.getAttribute('href').split('#');
-    parts[0] += (parts[0].indexOf('?') === -1 ? '?' : '&') + qs;
-    a.setAttribute('href', parts.join('#'));
-  });
-})();
